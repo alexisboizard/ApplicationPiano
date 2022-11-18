@@ -1,8 +1,14 @@
+import { uploadBytes } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
+import { storageRef } from "./firebase.js";
 const video3 = document.getElementsByClassName('input_video3')[0];
 const out3 = document.getElementsByClassName('output3')[0];
 const controlsElement3 = document.getElementsByClassName('control3')[0];
 const canvasCtx = out3.getContext('2d');
+const button = document.getElementById('start');
+const square = document.getElementById('square');
+const circle = document.getElementById('circle');
 const fpsControl = new FPS();
+
 let width = 1280;
 let height = 720;
 
@@ -43,24 +49,69 @@ hands.setOptions({
 hands.onResults(onResults);
 camera.start();
 
+let saved = out3.captureStream(60);
 
-let touchstartX = 0
-let touchendX = 0
-    
-function checkDirection() {
-  if (touchendX < touchstartX && touchendX > 150) {
-    document.getElementById("right").style.display = "flex";
-  }
-  if(touchendX > touchstartX && touchendX > 150) {
-    document.getElementById("right").style.display = "none";
+// save the stream to a file
+let recorder = new MediaRecorder(saved);
+let chunks = [];
+recorder.ondataavailable = function(e) {
+  chunks.push(e.data);
+};
+recorder.onstop = function(e) {
+  let blob = new Blob(chunks, { 'type' : 'video/mp4' });
+  uploadBytes(storageRef, blob).then((snapshot) => {
+    console.log('Uploaded a blob or file!');
+    notification.showToast();
+  });
+};
+
+let appui = false;
+
+function startRecording() {
+  if (appui === false) {
+    circle.style.display = "none";
+    square.style.display = "block";
+    recorder.start();
+    appui = true;
+  } else {
+    square.style.display = "none";
+    circle.style.display = "block";
+    recorder.stop();
+    appui = false;
   }
 }
 
-document.addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX
-})
+start.addEventListener('click', startRecording);
 
-document.addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX
-  checkDirection()
-})
+// let touchstartX = 0
+// let touchendX = 0
+    
+// function checkDirection() {
+//   if (touchendX < touchstartX && touchendX > 150) {
+//     document.getElementById("right").style.display = "flex";
+//   }
+//   if(touchendX > touchstartX && touchendX > 150) {
+//     document.getElementById("right").style.display = "none";
+//   }
+// }
+
+// document.addEventListener('touchstart', e => {
+//   touchstartX = e.changedTouches[0].screenX
+// })
+
+// document.addEventListener('touchend', e => {
+//   touchendX = e.changedTouches[0].screenX
+//   checkDirection()
+// })
+let notification = Toastify({
+  text: "La vidéo a bien été enregistrée",
+  duration: 3000,
+  close: true,
+  gravity: "bottom", // `top` or `bottom`
+  position: "right", // `left`, `center` or `right`
+  stopOnFocus: true, // Prevents dismissing of toast on hover
+  style: {
+    background: "#000",
+  },
+  onClick: function(){} // Callback after click
+});
