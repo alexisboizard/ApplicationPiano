@@ -79,10 +79,7 @@ main{
     text-align: center;
 }
 @media screen and (max-device-width: 600px) {
-    .output3{
-        height: 100%;
-        width: auto !important;
-    }
+
 }
 .right-side{
     display: none;
