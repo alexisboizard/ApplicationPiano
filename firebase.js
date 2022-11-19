@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
-import { getStorage, ref } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
+import { getStorage, ref,listAll } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -40,5 +40,19 @@ function generateString(length) {
 }
 
 const storageRef = ref(storage, 'videos/' + timestamp + '_' + generateString(10) + '.mp4');
+const r = ref(storage, 'videos/');
 
-export { storageRef };
+let array = [];
+
+listAll(r)
+.then((res)=> {
+    res.items.forEach((item) => {
+      array.push(item);
+    });
+  }).catch((error)=>{
+    console.log(error)
+})
+
+console.log(array.length)
+
+export { storageRef, array };

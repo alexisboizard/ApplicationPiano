@@ -1,5 +1,5 @@
 import { uploadBytes } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
-import { storageRef } from "./firebase.js";
+import { storageRef,array } from "./firebase.js";
 const video3 = document.getElementsByClassName('input_video3')[0];
 const out3 = document.getElementsByClassName('output3')[0];
 const controlsElement3 = document.getElementsByClassName('control3')[0];
@@ -105,7 +105,7 @@ start.addEventListener('click', startRecording);
 // })
 let notification = Toastify({
   text: "La vidéo a bien été enregistrée",
-  duration: 3000,
+  duration: 2000,
   close: true,
   gravity: "bottom", // `top` or `bottom`
   position: "right", // `left`, `center` or `right`
@@ -113,5 +113,6 @@ let notification = Toastify({
   style: {
     background: "#000",
   },
-  onClick: function(){} // Callback after click
 });
+
+console.log(array.length)
