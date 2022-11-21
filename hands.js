@@ -116,3 +116,11 @@ let notification = Toastify({
 });
 
 console.log(array.length)
+
+function metronome(bpm){
+  var audio = new Audio('tac.mp3');
+  let time = setInterval(function(){
+    audio.play();
+  }, 60000/bpm);
+  console.log(60000/bpm)
+}
