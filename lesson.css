@@ -107,3 +107,19 @@ main{
     flex-direction: column;
     justify-content: center;
 }
+
+.metronome{
+    margin-top: 2vh;
+    display: flex;
+    border: solid 1px #fff;
+    border-radius: 25px;
+    padding: 1vh;
+    
+}
+
+.dot{
+    border-radius: 100%;
+    background-color: red;
+    width: 20px;
+    margin-right: 1vw;
+}
