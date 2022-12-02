@@ -1,12 +1,12 @@
 import { uploadBytes } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
-import { storageRef,array } from "./firebase.js";
-const video3 = document.getElementsByClassName('input_video3')[0];
-const out3 = document.getElementsByClassName('output3')[0];
-const controlsElement3 = document.getElementsByClassName('control3')[0];
-const canvasCtx = out3.getContext('2d');
-const button = document.getElementById('start');
-const square = document.getElementById('square');
-const circle = document.getElementById('circle');
+import { storageRef, array } from "./firebase.js";
+const video3 = document.getElementsByClassName("input_video3")[0];
+const out3 = document.getElementsByClassName("output3")[0];
+const controlsElement3 = document.getElementsByClassName("control3")[0];
+const canvasCtx = out3.getContext("2d");
+const button = document.getElementById("start");
+const square = document.getElementById("square");
+const circle = document.getElementById("circle");
 const fpsControl = new FPS();
 
 let width = 1280;
@@ -15,36 +15,40 @@ let height = 720;
 function onResults(results) {
   canvasCtx.save();
   canvasCtx.clearRect(0, 0, out3.width, out3.height);
-  canvasCtx.drawImage(
-      results.image, 0, 0, out3.width, out3.height);
+  canvasCtx.drawImage(results.image, 0, 0, out3.width, out3.height);
   if (results.multiHandLandmarks) {
     for (const landmarks of results.multiHandLandmarks) {
-      drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS,
-                     {color: '#00FF00', lineWidth: 5});
-      drawLandmarks(canvasCtx, landmarks, {color: '#FF0000', lineWidth: 2});
+      drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
+        color: "#00FF00",
+        lineWidth: 5,
+      });
+      drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
     }
   }
+  // coordonne des points
+  //console.log(results.multiHandLandmarks);
   canvasCtx.restore();
 }
 
-const hands = new Hands({locateFile: (file) => {
-  return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
-}});
+const hands = new Hands({
+  locateFile: (file) => {
+    return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
+  },
+});
 
 const camera = new Camera(video3, {
   onFrame: async () => {
-    await hands.send({image: video3});
+    await hands.send({ image: video3 });
   },
   width: 1280,
-  height: 720
+  height: 720,
 });
 hands.setOptions({
   selfieMode: true,
   maxNumHands: 2,
   modelComplexity: 0,
-  minDetectionConfidence: 0.90,
-  minTrackingConfidence: 0.90
-  
+  minDetectionConfidence: 0.9,
+  minTrackingConfidence: 0.9,
 });
 hands.onResults(onResults);
 camera.start();
@@ -54,13 +58,13 @@ let saved = out3.captureStream(60);
 // save the stream to a file
 let recorder = new MediaRecorder(saved);
 let chunks = [];
-recorder.ondataavailable = function(e) {
+recorder.ondataavailable = function (e) {
   chunks.push(e.data);
 };
-recorder.onstop = function(e) {
-  let blob = new Blob(chunks, { 'type' : 'video/mp4' });
+recorder.onstop = function (e) {
+  let blob = new Blob(chunks, { type: "video/mp4" });
   uploadBytes(storageRef, blob).then((snapshot) => {
-    console.log('Uploaded a blob or file!');
+    console.log("Uploaded a blob or file!");
     notification.showToast();
   });
 };
@@ -81,11 +85,11 @@ function startRecording() {
   }
 }
 
-start.addEventListener('click', startRecording);
+start.addEventListener("click", startRecording);
 
 // let touchstartX = 0
 // let touchendX = 0
-    
+
 // function checkDirection() {
 //   if (touchendX < touchstartX && touchendX > 150) {
 //     document.getElementById("right").style.display = "flex";
@@ -115,5 +119,4 @@ let notification = Toastify({
   },
 });
 
-console.log(array.length)
-
+console.log(array.length);
