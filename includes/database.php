@@ -1,6 +1,5 @@
 <?php
-
-$dsn = "sqlite:database.db";
+$dsn = "sqlite:../database.db";
 
 try{
     $db = new PDO($dsn);

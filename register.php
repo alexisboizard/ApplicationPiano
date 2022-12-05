@@ -16,10 +16,10 @@
     <div class="main">
         <a href=""><img src="img-sae/profil-xxl.svg" class="profil" alt=""></a>
     </div>
-    <form action="" method="post" id="signup-form">
+    <form action="includes/signup.php" method="post" id="signup-form">
         <div class="form-top">
             <label for="surname">Prénom</label>
-            <input type="text" name="surname" id="surname" placeholder="Prénom">
+            <input type="text" name="firstname" id="firstname" placeholder="Prénom">
             <label for="name">Nom</label>
             <input type="text" name="name" id="name" placeholder="Nom">
         </div>
