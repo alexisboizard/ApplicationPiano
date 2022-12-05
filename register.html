@@ -16,7 +16,7 @@
     <div class="main">
         <a href=""><img src="img-sae/profil-xxl.svg" class="profil" alt=""></a>
     </div>
-    <form action="" method="post">
+    <form action="" method="post" id="signup-form">
         <div class="form-top">
             <label for="surname">Prénom</label>
             <input type="text" name="surname" id="surname" placeholder="Prénom">
@@ -29,7 +29,7 @@
         <input type="password" placeholder="Mot de passe" id="password" name="password">
         <label for="phone">Tel.</label>
         <input type="tel" placeholder="Numéro de téléphone" id="phone" name="phone">
-        <input class="submit" type="submit" value="Valider" name="login">
+        <input class="submit" type="submit" value="Valider" name="login" id="submit">
     </form>
     <p class="to-register">Déja un compte ? <em><a href="login.html">Se connecter</a></em></p>
     <footer class="navbar">
@@ -38,5 +38,6 @@
         <a href="replay.html"><img src="img-sae/video.svg" alt="" srcset=""></a>
         <a href="settings.html"><img src="img-sae/gear.svg" alt="" srcset=""></i></a>
     </footer>
+    <script type="module" src="auth.js"></script>
 </body>
 </html>
