@@ -56,3 +56,21 @@ h1{
 a {
     text-decoration: none;
 }
+
+.content-audio {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+    height: 40vh;
+    width: 120vh;
+    background-color: #2754bd;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;    font-size: 20px;
+}
+
+#volume-bar {
+    background-color: red;
+}
