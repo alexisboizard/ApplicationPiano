@@ -19,4 +19,21 @@ if(isset($_POST['signup'])){
             'lastname' => $lastname
         ]
     );
+    $user = $stmt->fetch();
+    if($user){
+        $error = "User already exists";
+    }else{
+        $sql = "INSERT INTO users (firstname, lastname, email, password, phone) VALUES (:firstname, :lastname, :email, :password, :phone)";
+        $stmt = $db->prepare($sql);
+        $stmt->execute(
+            [
+                'firstname' => $firstname, 
+                'lastname' => $lastname, 
+                'email' => $email, 
+                'password' => $password, 
+                'phone' => $phone
+            ]
+        );
+        header('Location: login.php');
+    }
 }
