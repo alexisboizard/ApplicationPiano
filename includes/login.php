@@ -1,20 +1,31 @@
 <?php
-
+seesion_start();
 include('includes/database.php');
 
 if(isset($_POST['login'])){
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "SELECT * FROM users WHERE username = :username AND password = :password";
+    $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
     $stmt = $db->prepare($sql);
-    $stmt->execute(['username' => $username, 'password' => $password]);
+    $stmt->execute(['email' => $email, 'password' => $password]);
     $user = $stmt->fetch();
 
     if($user){
-        $_SESSION['user_id'] = $user['id'];
+        $sql = "SELECT * FROM users WHERE email = :email AND password = :password";
+        $stmt = $db->prepare($sql);
+        $stmt->execute(
+            [
+                'email' => $email, 
+                'password' => $password
+            ]
+        );
+        $user = $stmt->fetch();
+        $_SESSION['user']['firstname'] = $user['firstname'];
+        $_SESSION['user']['email'] = $user['email'];
+        $_SESSION['user']['id'] = $user['id'];
         header('Location: index.php');
     }else{
-        $error = "Incorrect username or password";
+        $error = "Incorrect email or password";
     }
 }
