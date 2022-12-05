@@ -1,22 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-
 const firebaseConfig = {
-  apiKey: "AIzaSyDPUWga3UqPkHR3GFSOC7M0sSuuBEnriJs",
-
-  authDomain: "test-sae.firebaseapp.com",
-
-  databaseURL:
-    "https://test-sae-default-rtdb.europe-west1.firebasedatabase.app",
-
-  projectId: "test-sae",
-
-  storageBucket: "test-sae.appspot.com",
-
-  messagingSenderId: "129679287559",
-
-  appId: "1:129679287559:web:62ad7e8d6d7fcc14bb11a2",
-
-  measurementId: "G-R30XBT2WG5",
+  apiKey: "AIzaSyAVbzqpEDr7NuSzNYmMZZiEPmiIMG0pXhQ",
+  authDomain: "ptut-84cde.firebaseapp.com",
+  projectId: "ptut-84cde",
+  storageBucket: "ptut-84cde.appspot.com",
+  messagingSenderId: "622517052847",
+  appId: "1:622517052847:web:3e8aa48e80b7d01edf3b5a"
 };
 
 // Initialize Firebase
@@ -24,6 +13,8 @@ const app = initializeApp(firebaseConfig);
 import {
   getAuth,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
 
 const auth = getAuth();
@@ -33,9 +24,8 @@ signupForm.addEventListener("submit", async (e) => {
   const email = signupForm["email"].value;
   const password = signupForm["password"].value;
   console.log(email);
-  createUserWithEmailAndPassword(email, password)
+  createUserWithEmailAndPassword(auth,email, password)
     .then((userCredential) => {
-      location.reload();
       // Signed in
       let user = userCredential.user;
       console.log("user", user.email);
@@ -47,3 +37,28 @@ signupForm.addEventListener("submit", async (e) => {
       console.log("error Message", errorMessage);
     });
 });
+
+let user;
+const signinForm = document.getElementById("signinForm");
+
+signinForm.addEventListener("submit", login());
+
+async function login(){
+  const email = signinForm["email"].value;
+  const password = signinForm["password"].value;
+
+  signInWithEmailAndPassword(auth,email,password)
+  .then((userCredential) => {
+    //login
+    user = userCredential.user;
+  })    
+  .catch((error) => {
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    console.log("error code", errorCode);
+    console.log("error Message", errorMessage);
+  });
+  window.location.replace("https://google.fr");
+}
+
+export {user};

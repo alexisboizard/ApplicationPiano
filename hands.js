@@ -26,7 +26,7 @@ function onResults(results) {
     }
   }
   // coordonne des points
-  //console.log(results.multiHandLandmarks);
+  console.log(results.multiHandLandmarks);
   canvasCtx.restore();
 }
 
