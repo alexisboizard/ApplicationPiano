@@ -1,5 +1,5 @@
 <?php
-seesion_start();
+session_start();
 include('includes/database.php');
 
 if(isset($_POST['login'])){

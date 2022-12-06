@@ -1,5 +1,3 @@
-import { uploadBytes } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-storage.js";
-import { storageRef, array } from "./firebase.js";
 const video3 = document.getElementsByClassName("input_video3")[0];
 const out3 = document.getElementsByClassName("output3")[0];
 const controlsElement3 = document.getElementsByClassName("control3")[0];
@@ -63,10 +61,29 @@ recorder.ondataavailable = function (e) {
 };
 recorder.onstop = function (e) {
   let blob = new Blob(chunks, { type: "video/mp4" });
-  uploadBytes(storageRef, blob).then((snapshot) => {
-    console.log("Uploaded a blob or file!");
-    notification.showToast();
-  });
+  console.log(blob);
+  let data = new FormData()
+  data.append("name" , generateString(10) + ".mp4")
+  data.append("data", blob)
+  $.ajax({
+    type: "POST",
+    enctype: 'multipart/form-data',
+    url: "/includes/save_replay.php",
+    data: data,
+    processData: false,
+    contentType: false,
+    cache: false,
+    timeout: 600000,
+    success: function (data) {
+        console.log(data);
+
+
+    },
+    error: function (e) {
+        console.log("ERROR : ", e);
+    }
+});
+
 };
 
 let appui = false;
@@ -119,4 +136,13 @@ let notification = Toastify({
   },
 });
 
-console.log(array.length);
+function generateString(length) {
+  const characters ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = " ";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return result;
+}
