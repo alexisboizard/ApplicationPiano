@@ -16,7 +16,7 @@
     <div class="main">
         <a href=""><img src="img-sae/profil-xxl.svg" class="profil" alt=""></a>
     </div>
-    <form action="" method="post" id="signinForm">
+    <form action="/includes/signin.php" method="post" id="signinForm">
         <label for="email">Email</label>
         <input type="text" placeholder="Email" id="email" name="email">
         <label for="password">Password</label>

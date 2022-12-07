@@ -63,7 +63,9 @@ recorder.onstop = function (e) {
   let blob = new Blob(chunks, { type: "video/mp4" });
   console.log(blob);
   fetch(`includes/save_replay.php`, {method:"POST", body:blob})
-                .then(response => console.log(response.text()))  
+                .then(response => {
+                  notification.showToast();
+                })  
 };
 
 let appui = false;

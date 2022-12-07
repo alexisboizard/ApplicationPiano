@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,13 @@
     <a class="login-button fa-2x" href="login.php">
         <img src="img-sae/profil.svg" alt="" srcset="">
     </a>
-    <h1>Bonjour Paul ,</h1>
+    <?php
+            if(isset($_SESSION)){
+                echo "<h1> Bonjour "  . $_SESSION["user"]["firstname"]. ", </h1>";
+            }else{
+                echo "<h1> Bonjour Inconnu,</h1>";
+            }
+    ?>    
     <div class="container test">
         <p class="first-para">Reprendre la leçon</p>
     </div>

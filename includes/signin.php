@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('includes/database.php');
+include('database.php');
 
 if(isset($_POST['login'])){
     $email = $_POST['email'];
@@ -23,8 +23,8 @@ if(isset($_POST['login'])){
         $user = $stmt->fetch();
         $_SESSION['user']['firstname'] = $user['firstname'];
         $_SESSION['user']['email'] = $user['email'];
-        $_SESSION['user']['id'] = $user['id'];
-        header('Location: index.php');
+        $_SESSION['user']['id'] = $user['ID'];
+        header('Location: ../home.php');
     }else{
         $error = "Incorrect email or password";
     }

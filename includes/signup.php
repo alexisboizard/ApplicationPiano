@@ -18,7 +18,7 @@ include('database.php');
         ]
     );
     $user = $stmt->fetch();
-    if($user['ID']){
+    if($user){
         $error = "User already exists";
         echo $error;
     }else{
