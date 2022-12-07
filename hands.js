@@ -10,6 +10,8 @@ const fpsControl = new FPS();
 let width = 1280;
 let height = 720;
 
+let Metro = false;
+
 function onResults(results) {
   canvasCtx.save();
   canvasCtx.clearRect(0, 0, out3.width, out3.height);
@@ -21,10 +23,32 @@ function onResults(results) {
         lineWidth: 5,
       });
       drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
+      console.log(results.multiHandLandmarks);
+      let distance = Math.sqrt(Math.pow((results.multiHandLandmarks[0][8].x-results.multiHandLandmarks[0][12].x), 2)+Math.pow((results.multiHandLandmarks[0][8].y-results.multiHandLandmarks[0][12].y), 2)+Math.pow((results.multiHandLandmarks[0][8].z-results.multiHandLandmarks[0][12].z), 2));   
+      //console.log("Distance entre l'index et le majeur : ", distance);
+
+
+      let radianindexmajeurgauche = Math.atan(results.multiHandLandmarks[0][8].x - results.multiHandLandmarks[0][12].x, results.multiHandLandmarks[0][8].y - results.multiHandLandmarks[0][12].y) - Math.atan(results.multiHandLandmarks[0][9].x - results.multiHandLandmarks[0][12].x, results.multiHandLandmarks[0][9].y - results.multiHandLandmarks[0][12].y);
+      let angleindexmajeurgauche = Math.abs(radianindexmajeurgauche*180.0/Math.PI);
+      if (angleindexmajeurgauche > 180.0) {
+        angleindexmajeurgauche = 360-angleindexmajeurgauche;
+      }
+      console.log("Angle entre l'index et le majeur (main gauche): ", angleindexmajeurgauche);
+      if (angleindexmajeurgauche > 7) {
+        console.log("Rapprochez votre index de votre majeur !");
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = "Rapprochez votre index de votre majeur ";
+        window.speechSynthesis.speak(msg);
+      }
+      else {
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = " ";
+        window.speechSynthesis.speak(msg);
+      }
     }
   }
   // coordonne des points
-  console.log(results.multiHandLandmarks);
+  //console.log(results.multiHandLandmarks);
   canvasCtx.restore();
 }
 
@@ -146,3 +170,39 @@ function generateString(length) {
 
   return result;
 }
+
+
+
+/**
+ * 
+ * LISTE DES POINTS DE LA MAIN MEDIAPIPE *
+ * 
+ */
+
+
+
+/*
+  *
+hands.WIRST = 0;
+hands.THUMB_CMC = 1;
+hands.THUMB_MCP = 2;
+hands.THUMB_IP = 3;
+hands.THUMB_TIP = 4;
+hands.INDEX_FINGER_MCP = 5;
+hands.INDEX_FINGER_PIP = 6;
+hands.INDEX_FINGER_DIP = 7;
+hands.INDEX_FINGER_TIP = 8;
+hands.MIDDLE_FINGER_MCP = 9;
+hands.MIDDLE_FINGER_PIP = 10;
+hands.MIDDLE_FINGER_DIP = 11;
+hands.MIDDLE_FINGER_TIP = 12;
+hands.RING_FINGER_MCP = 13;
+hands.RING_FINGER_PIP = 14;
+hands.RING_FINGER_DIP = 15;
+hands.RING_FINGER_TIP = 16;
+hands.PINKY_MCP = 17;
+hands.PINKY_PIP = 18;
+hands.PINKY_DIP = 19;
+hands.PINKY_TIP = 20;
+  *
+*/
