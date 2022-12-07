@@ -32,12 +32,9 @@
         <input class="submit" type="submit" value="Valider" name="login" id="submit">
     </form>
     <p class="to-register">Déja un compte ? <em><a href="login.php">Se connecter</a></em></p>
-    <footer class="navbar">
-        <a href="home.php"><img src="img-sae/home.svg" alt="" srcset=""></a>
-        <a href="lesson.php"><img src="img-sae/plus.svg" alt="" srcset=""></a>
-        <a href="replay.php"><img src="img-sae/video.svg" alt="" srcset=""></a>
-        <a href="settings.php"><img src="img-sae/gear.svg" alt="" srcset=""></i></a>
-    </footer>
+    
+    <?php include_once __DIR__ . ("/modules/footer.php"); ?>
+    
     <script type="module" src="auth.js"></script>
 </body>
 </html>
