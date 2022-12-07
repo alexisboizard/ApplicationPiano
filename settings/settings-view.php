@@ -20,8 +20,13 @@
     <main>
         <div class="container">
 
-            <div class="content">
-
+            <div class="content-view">
+                <p class="theme-left">Sombre</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <p class="theme-right">Couleur</p>
             </div>
             
         </div>

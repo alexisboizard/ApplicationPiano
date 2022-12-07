@@ -21,7 +21,7 @@
         <div class="container">
             <div class="content-audio">
                 <p>Volume</p>
-                <input type="range" min="1" max="100" value="50" id="volume-bar">
+                <input type="range" min="1" max="100" value="25" id="volume-bar">
             </div>
         </div>
     </main>

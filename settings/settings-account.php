@@ -20,8 +20,9 @@
     <main>
         <div class="container">
 
-            <div class="content">
-
+            <div class="content-account">
+                <button>Changer nom/prénom</button>
+                <button>Changer de mot de passe</button>
             </div>
             
         </div>
