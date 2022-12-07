@@ -42,12 +42,8 @@
         </div>
     </div>
     
-    <footer class="navbar">
-        <a href="home.php"><img src="img-sae/home.svg" alt="" srcset=""></a>
-        <a href="lesson.php"><img src="img-sae/plus.svg" alt="" srcset=""></a>
-        <a href="replay.php"><img src="img-sae/video.svg" alt="" srcset=""></a>
-        <a href="profile.php"><img src="img-sae/gear.svg" alt="" srcset=""></i></a>
-    </footer>
+    <?php include_once __DIR__ . ("/modules/footer.php"); ?>
+
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";

@@ -27,11 +27,7 @@
         </div>
     </main>
 
-    <footer class="navbar">
-        <a href="../home.php"><img src="../img-sae/home.svg" alt="icon"></a>
-        <a href="../lesson.php"><img src="../img-sae/plus.svg" alt="icon"></a>
-        <a href="../replay.php"><img src="../img-sae/video.svg" alt="icon"></a>
-        <a href="settings.php"><img src="../img-sae/gear.svg" alt="icon"></a>
-    </footer>
+    <?php include_once("../modules/footer.php"); ?>
+    
 </body>
 </html>

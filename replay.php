@@ -40,11 +40,8 @@
             <p>20/20</p>
         </div>
     </div>
-    <footer class="navbar">
-        <a href="home.php"><img src="img-sae/home.svg" alt="" srcset=""></a>
-        <a href="lesson.php"><img src="img-sae/plus.svg" alt="" srcset=""></a>
-        <a href="replay.php"><img src="img-sae/video.svg" alt="" srcset=""></a>
-        <a href="settings.php"><img src="img-sae/gear.svg" alt="" srcset=""></i></a>
-    </footer>
+    
+    <?php include_once __DIR__ . ("/modules/footer.php"); ?>
+    
 </body>
 </html>
