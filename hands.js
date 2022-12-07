@@ -62,28 +62,8 @@ recorder.ondataavailable = function (e) {
 recorder.onstop = function (e) {
   let blob = new Blob(chunks, { type: "video/mp4" });
   console.log(blob);
-  let data = new FormData()
-  data.append("name" , generateString(10) + ".mp4")
-  data.append("data", blob)
-  $.ajax({
-    type: "POST",
-    enctype: 'multipart/form-data',
-    url: "/includes/save_replay.php",
-    data: data,
-    processData: false,
-    contentType: false,
-    cache: false,
-    timeout: 600000,
-    success: function (data) {
-        console.log(data);
-
-
-    },
-    error: function (e) {
-        console.log("ERROR : ", e);
-    }
-});
-
+  fetch(`includes/save_replay.php`, {method:"POST", body:blob})
+                .then(response => console.log(response.text()))  
 };
 
 let appui = false;

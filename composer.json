@@ -1,0 +1,9 @@
+{
+    "name": "alexis/ptut_appli_piano",
+    "autoload": {
+        "psr-4": {
+            "Alexis\\PtutAppliPiano\\": "src/"
+        }
+    },
+    "require": {}
+}
