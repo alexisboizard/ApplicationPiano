@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,6 +17,18 @@
 <body>
     <a href="home.php"><img class="back" src="img-sae/back.svg" alt=""></a>
     <h1>REPLAY</h1>
+    <?php
+        include('includes/database.php');
+
+        $stmt = $db->prepare("SELECT * FROM replay where userId = :id");
+        $stmt->excute(
+            [
+                "id" => $_SESSION['user']['id']
+            ]
+            );
+        $result = $stmt->fetch();
+        var_dump($stmt);
+    ?>
     <div class="container">
         <div class="content">
             <p class="first-para">Leçon 1</p>
