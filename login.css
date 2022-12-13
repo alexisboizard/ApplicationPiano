@@ -9,6 +9,12 @@ body{
     min-height: 100%;
 }
 
+h1 {
+    padding-top: 10vh;
+    text-align: center;
+    color: #000;
+}
+
 .back{
     margin-top: 2vh;
     margin-left: 2vh;

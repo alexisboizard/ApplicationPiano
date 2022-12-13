@@ -19,6 +19,9 @@
             <video class="input3" style="display: none;" ></video>
             <canvas class="output3" width="1920" height="1080"></canvas>
         </div>
+        <!--<div class="change-camera">
+             <button id="change-camera"></button> 
+        </div> -->
         <div id="start" class="white-circle">
             <div class="red-circle" id="circle"></div>
             <div class="red-square" id="square"></div>
