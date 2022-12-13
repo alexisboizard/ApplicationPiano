@@ -19,12 +19,11 @@
     
     <main>
         <div class="container">
-
-            <div class="content-account">
-                <button>Changer nom/prénom</button>
-                <button>Changer de mot de passe</button>
-            </div>
-            
+            <form action="../update-account.php">
+                <div type="submit" class="content-account">
+                    <button id="button-account">Changer vos données d'authentification</button>
+                </div>
+            </form>
         </div>
     </main>
 
