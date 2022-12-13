@@ -14,14 +14,19 @@
 <body>
     <header>
         <a href="home.php"><img class="back" src="img-sae/back.svg" alt=""></a>
-        <h1>Paramètres</h1>
+        <h1>Paramètres d'affichage</h1>
     </header>
     
     <main>
         <div class="container">
 
-            <div class="content">
-
+            <div class="content-view">
+                <p class="theme-left">Sombre</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+                <p class="theme-right">Couleur</p>
             </div>
             
         </div>

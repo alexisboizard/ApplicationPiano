@@ -21,12 +21,23 @@
         <div class="container">
             <div class="content-audio">
                 <p>Volume</p>
-                <input type="range" min="1" max="100" value="50" id="volume-bar">
+                <input type="range" min="1" max="100" value="25" id="volume-bar">
+                <p>Value: <span id="value"></span></p>
             </div>
         </div>
     </main>
 
     <?php include_once ("../modules/footer.php"); ?>
+
+    <script>
+        var slider = document.getElementById("volume-bar");
+        var output = document.getElementById("value");
+        output.innerHTML = slider.value;
+        slider.oninput = function() 
+        {
+            output.innerHTML = this.value;
+        }
+    </script>
 
 </body>
 </html>
