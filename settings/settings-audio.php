@@ -33,7 +33,8 @@
         var slider = document.getElementById("volume-bar");
         var output = document.getElementById("value");
         output.innerHTML = slider.value;
-        slider.oninput = function() {
+        slider.oninput = function() 
+        {
             output.innerHTML = this.value;
         }
     </script>

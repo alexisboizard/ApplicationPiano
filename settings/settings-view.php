@@ -14,7 +14,7 @@
 <body>
     <header>
         <a href="home.php"><img class="back" src="img-sae/back.svg" alt=""></a>
-        <h1>Paramètres</h1>
+        <h1>Paramètres d'affichage</h1>
     </header>
     
     <main>

@@ -14,14 +14,14 @@
 <body>
     <header>
         <a href="home.php"><img class="back" src="img-sae/back.svg" alt=""></a>
-        <h1>Paramètres</h1>
+        <h1>Paramètres du compte</h1>
     </header>
     
     <main>
         <div class="container">
             <form action="../update-account.php">
                 <div type="submit" class="content-account">
-                    <button id="button-account">Changer vos données d'authentification</button>
+                    <button id="button-account">Mettre à jour vos données d'authentification</button>
                 </div>
             </form>
         </div>
