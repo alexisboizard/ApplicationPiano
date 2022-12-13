@@ -34,6 +34,11 @@ const hands = new Hands({
   },
 });
 
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+  /* your code here */
+}
+
 const camera = new Camera(video3, {
   onFrame: async () => {
     await hands.send({ image: video3 });

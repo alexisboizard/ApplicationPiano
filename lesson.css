@@ -79,7 +79,9 @@ main{
     text-align: center;
 }
 @media screen and (max-device-width: 600px) {
-
+    .output3{
+        aspect-ratio: 2 / 3;
+    }
 }
 .right-side{
     display: none;
