@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,34 +17,31 @@
 <body>
     <a href="home.php"><img class="back" src="img-sae/back.svg" alt=""></a>
     <h1>REPLAY</h1>
-    <div class="container">
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-    </div>
+    <?php
+        include('includes/database.php');
+
+        $stmt = $db->prepare("SELECT * FROM replay where userId = :id");
+        $stmt->execute(
+            [
+                'id' => $_SESSION['user']['id']
+            ]
+            );
+        $result = $stmt->fetchAll();
+        $cpt = 1;
+        echo "<div class='container'>";
+        foreach($result as $i){
+            echo '<div class="content" onclick="addVideo()">';
+            echo '<p class="first-para"> Leçon n°'.$cpt.'</p>';  
+            echo '<p>'.$i["date"].'</p>';
+            echo '</div>';
+            $cpt = $cpt + 1;
+        }
+        echo "</div>"
+    ?>
+    <video></video>
+
     
     <?php include_once __DIR__ . ("/modules/footer.php"); ?>
-    
+    <script src="hand.js"></script>
 </body>
 </html>

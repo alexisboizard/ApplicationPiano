@@ -125,3 +125,7 @@ main{
     width: 20px;
     margin-right: 1vw;
 }
+
+.video-controls,.inputs,.dropdown-wrapper, input{
+    display: none;
+}
