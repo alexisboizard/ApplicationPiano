@@ -21,42 +21,27 @@
         include('includes/database.php');
 
         $stmt = $db->prepare("SELECT * FROM replay where userId = :id");
-        $stmt->excute(
+        $stmt->execute(
             [
-                "id" => $_SESSION['user']['id']
+                'id' => $_SESSION['user']['id']
             ]
             );
-        $result = $stmt->fetch();
-        var_dump($stmt);
+        $result = $stmt->fetchAll();
+        $cpt = 1;
+        echo "<div class='container'>";
+        foreach($result as $i){
+            echo '<div class="content" onclick="addVideo()">';
+            echo '<p class="first-para"> Leçon n°'.$cpt.'</p>';  
+            echo '<p>'.$i["date"].'</p>';
+            echo '</div>';
+            $cpt = $cpt + 1;
+        }
+        echo "</div>"
     ?>
-    <div class="container">
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-        <div class="content">
-            <p class="first-para">Leçon 1</p>
-            <p>20/20</p>
-        </div>
-    </div>
+    <video></video>
+
     
     <?php include_once __DIR__ . ("/modules/footer.php"); ?>
-    
+    <script src="hand.js"></script>
 </body>
 </html>

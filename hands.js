@@ -1,6 +1,7 @@
-const video3 = document.getElementsByClassName("input_video3")[0];
+const video3 = document.getElementsByClassName("input3")[0];
 const out3 = document.getElementsByClassName("output3")[0];
-const controlsElement3 = document.getElementsByClassName("control3")[0];
+const controlsElement = document.getElementsByClassName("control3")[0];
+const controls = window;
 const canvasCtx = out3.getContext("2d");
 const button = document.getElementById("start");
 const square = document.getElementById("square");
@@ -63,6 +64,7 @@ recorder.onstop = function (e) {
   let blob = new Blob(chunks, { type: "video/mp4" });
   fetch(`includes/save_replay.php`, {method:"POST", body:blob})
                 .then(response => {
+                  console.log(response)
                   notification.showToast();
                 })  
 };
@@ -82,6 +84,34 @@ function startRecording() {
     appui = false;
   }
 }
+
+new controls
+    .ControlPanel(controlsElement, {
+      selfieMode: true,
+      maxNumHands: 1,
+      modelComplexity: 1,
+      minDetectionConfidence: 1,
+      minTrackingConfidence: 1
+    })
+    .add([
+      new controls.SourcePicker({
+        onFrame:
+            async (input= controls.InputImage, size= controls.Rectangle) => {
+              const aspect = size.height / size.width;
+              let width= 1920, height= 1080;
+              if (window.innerWidth > window.innerHeight) {
+                height = window.innerHeight;
+                width = height / aspect;
+              } else {
+                width = window.innerWidth;
+                height = width * aspect;
+              }
+              canvasCtx.width = width;
+              canvasCtx.height = height;
+              await hands.send({image: input});
+            },
+      }),
+    ])
 
 start.addEventListener("click", startRecording);
 
@@ -126,4 +156,11 @@ function generateString(length) {
   }
 
   return result;
+}
+
+function addVideo(blob){
+  console.log(blob);  
+  let input = document.querySelector('video');
+  let video = window.URL.createObjectURL(blob);
+  input.src = video;
 }
