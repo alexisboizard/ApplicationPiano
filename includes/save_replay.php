@@ -15,7 +15,7 @@ function genererChaineAleatoire($longueur = 10)
 }
 
 $data = file_get_contents('php://input');
-$name = time() . "-" .genererChaineAleatoire(10);
+$name = time() . "-" .genererChaineAleatoire(10) . ".mp4";
 
 if(isset($_SESSION)){
     $statment = $db->prepare("INSERT INTO replay values(:id,:name,:data,:userId,:date)");
@@ -28,5 +28,3 @@ if(isset($_SESSION)){
     ));
     $tets = $statment->fetch();
 }
-
-echo "test";

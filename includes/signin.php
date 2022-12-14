@@ -25,6 +25,7 @@ if(isset($_POST['login'])){
         $_SESSION['user']['email'] = $user['email'];
         $_SESSION['user']['id'] = $user['ID'];
         header('Location: ../home.php');
+        exit();
     }else{
         $error = "Incorrect email or password";
     }
