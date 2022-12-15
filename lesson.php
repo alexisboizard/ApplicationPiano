@@ -26,12 +26,12 @@
             <div class="red-circle" id="circle"></div>
             <div class="red-square" id="square"></div>
         </div>
-        <div class="metronome">
-            <div class="dot"></div>
-            <p id="metronome_button">
-                Metronome
-            </p>
-        </div>
+
+        <div class="start-stop">START</div>
+        <script type="text/javascript">
+            // Ici on apelle la fonction
+        </script>
+
         <div class="control3"></div>
         <div class="landmark-grid-container">
 
@@ -73,6 +73,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
     <script type="module" src="hands.js"></script>
-    <script src="metronome.js"></script>
+    <script type="module" src="metronome.js"></script>
 </body>
 </html>
