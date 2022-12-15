@@ -201,21 +201,21 @@ function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auri
       console.log("Main gauche, rapprochez votre index de votre majeur !");
       var msg = new SpeechSynthesisUtterance();
       let text = "Main gauche, rapprochez votre index de votre majeur ";
-      responsiveVoice.speak(text,"French Canadian Voice");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
 
     if (distance_auriculaire < 0.09) {
       console.log("detendez votre auriculaire : ", distance_auriculaire);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre auriculaire ";
-      responsiveVoice.speak(text,"French Canadian Voice");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
 
     if (dist_index_gauche < 0.1) {
       console.log("detendez votre index (main gauche): ", dist_index_gauche);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre index ";
-      responsiveVoice.speak(text,"French Canadian Voice");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
   }
 }
