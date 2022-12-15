@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include('database.php');
 
@@ -30,3 +31,5 @@ if(isset($_POST['login'])){
         $error = "Incorrect email or password";
     }
 }
+
+ob_end_flush();

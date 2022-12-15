@@ -23,9 +23,7 @@
         <input type="password" placeholder="Mot de passe" id="password" name="password">
         <input class="submit" type="submit" value="Valider" name="login">
     </form>
-    <p class="to-register">Pas de compte ? <em><a href="register.php">S'inscrire</a></em></p>
-    <script type="module" src="auth.js"></script>
-    
+    <p class="to-register">Pas de compte ? <em><a href="register.php">S'inscrire</a></em></p>    
     <?php include_once __DIR__ . ("/modules/footer.php"); ?>
     
 </body>
