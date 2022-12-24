@@ -143,26 +143,6 @@ new controls
 
 start.addEventListener("click", startRecording);
 
-// let touchstartX = 0
-// let touchendX = 0
-
-// function checkDirection() {
-//   if (touchendX < touchstartX && touchendX > 150) {
-//     document.getElementById("right").style.display = "flex";
-//   }
-//   if(touchendX > touchstartX && touchendX > 150) {
-//     document.getElementById("right").style.display = "none";
-//   }
-// }
-
-// document.addEventListener('touchstart', e => {
-//   touchstartX = e.changedTouches[0].screenX
-// })
-
-// document.addEventListener('touchend', e => {
-//   touchendX = e.changedTouches[0].screenX
-//   checkDirection()
-// })
 let notification = Toastify({
   text: "La vidéo a bien été enregistrée",
   duration: 2000,
@@ -186,12 +166,7 @@ function generateString(length) {
   return result;
 }
 
-function addVideo(blob){
-  console.log(blob);  
-  let input = document.querySelector('video');
-  let video = window.URL.createObjectURL(blob);
-  input.src = video;
-}
+
 
 function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auriculaire) {
   let speech = false;

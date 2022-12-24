@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include __DIR__ . "/includes/show_replay.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,6 +19,7 @@
     <a href="home.php"><img class="back" src="img-sae/back.svg" alt=""></a>
     <h1>REPLAY</h1>
     <?php
+        ob_start();
         include('includes/database.php');
 
         $stmt = $db->prepare("SELECT * FROM replay where userId = :id");
@@ -28,20 +30,30 @@
             );
         $result = $stmt->fetchAll();
         $cpt = 1;
+        $output = ob_get_clean();
         echo "<div class='container'>";
         foreach($result as $i){
-            echo '<div class="content" onclick="addVideo()">';
+            echo '<a href="?id='.$i['id'].'">';
+            echo '<div class="content">';
             echo '<p class="first-para"> Leçon n°'.$cpt.'</p>';  
             echo '<p>'.$i["date"].'</p>';
             echo '</div>';
+            echo '</a>';
             $cpt = $cpt + 1;
         }
         echo "</div>"
     ?>
     <video></video>
-
+    <script>
+        function showVideo(id){
+            let vidID = id;
+            fetch(`includes/show_replay.php`, {method:"GET", body:vidID})
+            .then(response => {
+                console.log(response)
+            })  
+        }
+    </script>
     
     <?php include_once __DIR__ . ("/modules/footer.php"); ?>
-    <script src="hand.js"></script>
 </body>
 </html>
