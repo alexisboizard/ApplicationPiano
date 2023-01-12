@@ -122,7 +122,25 @@ new controls
       minDetectionConfidence: 1,
       minTrackingConfidence: 1
     })
-
+    .add([
+      new controls.SourcePicker({
+        onFrame:
+            async (input= controls.InputImage, size= controls.Rectangle) => {
+              const aspect = size.height / size.width;
+              let width= 1920, height= 1080;
+              if (window.innerWidth > window.innerHeight) {
+                height = window.innerHeight;
+                width = height / aspect;
+              } else {
+                width = window.innerWidth;
+                height = width * aspect;
+              }
+              canvasCtx.width = width;
+              canvasCtx.height = height;
+              await hands.send({image: input});
+            },
+      }),
+    ])
 
 start.addEventListener("click", startRecording);
 
