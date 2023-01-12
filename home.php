@@ -3,6 +3,11 @@
     if(!isset($_SESSION['user'])){
         header('Location: /login.php');
     }
+    if(!isset($_SESSION['hisotry']['actual-page'])){
+        $_SESSION['history']['actual-page'] = null;
+    }
+    $_SESSION['history']['last-page'] = $_SESSION['history']['actual-page'];
+    $_SESSION['history']['actual-page'] = 'home.php';
 
 ?>
 <!DOCTYPE html>

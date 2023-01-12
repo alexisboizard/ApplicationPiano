@@ -19,6 +19,7 @@ function onResults(results) {
   canvasCtx.drawImage(results.image, 0, 0, out3.width, out3.height);
   if (results.multiHandLandmarks) {
     for (const landmarks of results.multiHandLandmarks) {
+      console.log(landmarks);
       drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
         color: "#00FF00",
         lineWidth: 5,
@@ -113,33 +114,6 @@ function startRecording() {
   }
 }
 
-new controls
-    .ControlPanel(controlsElement, {
-      selfieMode: true,
-      maxNumHands: 1,
-      modelComplexity: 1,
-      minDetectionConfidence: 1,
-      minTrackingConfidence: 1
-    })
-    .add([
-      new controls.SourcePicker({
-        onFrame:
-            async (input= controls.InputImage, size= controls.Rectangle) => {
-              const aspect = size.height / size.width;
-              let width= 1920, height= 1080;
-              if (window.innerWidth > window.innerHeight) {
-                height = window.innerHeight;
-                width = height / aspect;
-              } else {
-                width = window.innerWidth;
-                height = width * aspect;
-              }
-              canvasCtx.width = width;
-              canvasCtx.height = height;
-              await hands.send({image: input});
-            },
-      }),
-    ])
 
 start.addEventListener("click", startRecording);
 

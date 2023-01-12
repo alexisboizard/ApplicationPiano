@@ -1,6 +1,8 @@
 <?php 
     session_start();
     include __DIR__ . "/includes/show_replay.php";
+    $_SESSION['history']['last-page'] = $_SESSION['history']['actual-page'];
+    $_SESSION['history']['actual-page'] = 'replay.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

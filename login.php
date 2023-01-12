@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!($_SESSION['history']['last-page'] == 'login.php')){
+    $_SESSION['history']['last-page'] = $_SESSION['history']['actual-page'];
+    $_SESSION['history']['actual-page'] = 'login.php';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <a href="home.php"><img class="back" src="img-sae/back.svg" alt=""></a>
+    <a href=<?= $_SESSION['history']['last-page'] ?>><img class="back" src="img-sae/back.svg" alt=""></a>
     <div class="main">
         <a href=""><img src="img-sae/profil-xxl.svg" class="profil" alt=""></a>
     </div>
