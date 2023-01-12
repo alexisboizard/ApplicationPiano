@@ -114,6 +114,15 @@ function startRecording() {
   }
 }
 
+new controls
+    .ControlPanel(controlsElement, {
+      selfieMode: true,
+      maxNumHands: 1,
+      modelComplexity: 1,
+      minDetectionConfidence: 1,
+      minTrackingConfidence: 1
+    })
+
 
 start.addEventListener("click", startRecording);
 
