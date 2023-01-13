@@ -197,10 +197,11 @@ function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auri
   }
 }
 
-let upload = docume.getElementsByClassName("file-selection")[0];
-
+let upload = document.getElementsByClassName("source-selection")[0];
+console.log(upload);
 upload.addEventListener("click",function(){
   camera.stop();
+  console.log("Ta mere")
 }); 
 
 /**
