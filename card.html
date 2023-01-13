@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="cards">
+        <div class="arrows">
+            <i class="fa-solid fa-arrow-left left-arrow"></i>
+            <i class="fa-solid fa-arrow-right right-arrow"></i>
+        </div>
+        <div class="card">
+            <h2>Tutoriel</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+        </div>
+        <div class="card2">
+            <h2>Tutoriel</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+        </div>
+        <div class="card3">
+            <h2>Tutoriel</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+        </div>
+
+    </div>
+    <style>
+        .cards{
+            width: 20vw;
+            height: 70vh;
+            margin-left: 40vw;
+            margin-top: 15vh;
+            background-color: #000;
+        }
+        .card{
+            width: 20vw;
+            height: 70vh;
+            background-color: pink;
+            border-radius: 20px;
+            box-shadow: 12px 12px 2px 1px rgba(255, 0, 242, 0.2);
+        }
+        .arrows{
+            font-size: 20px;
+            display: flex;
+            flex-direction: row;
+            margin-top: 80%;
+            color:#fff;
+            z-index: 2;
+        }
+        h2,p{
+            text-align: center;
+            color: #fff;
+        }
+        h2{
+            margin-top: 20%
+        }
+        p{
+            width: 80%;
+            margin-left: 10%;
+        }
+        .left-arrow{
+            margin-left: 5%;
+        }
+        .right-arrow{
+            margin-left: 75%;
+        }
+        .arrows>i:hover{
+            outline: solid 2px #fff;
+            border-radius: 100%;
+        }
+        @media (max-width: 480px) and (min-width:320px){
+            .card{
+                width: 60vw;
+                margin-left: 20vw;
+                height: 60vh;
+                margin-top: 20vw;
+            }
+        }
+    </style>
+</body>
+</html>

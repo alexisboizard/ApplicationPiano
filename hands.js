@@ -68,6 +68,7 @@ const camera = new Camera(video3, {
   onFrame: async () => {
     await hands.send({ image: video3 });
   },
+  facingMode: 'environment',
   width: 1280,
   height: 720,
 });
@@ -195,6 +196,12 @@ function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auri
     }
   }
 }
+
+let upload = docume.getElementsByClassName("file-selection")[0];
+
+upload.addEventListener("click",function(){
+  camera.stop();
+}); 
 
 /**
  * 
