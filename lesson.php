@@ -10,7 +10,7 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="lesson.css">
+    <link rel="stylesheet" href="css/lesson.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
