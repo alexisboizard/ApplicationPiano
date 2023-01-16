@@ -80,7 +80,7 @@ hands.setOptions({
   minTrackingConfidence: 0.9,
 });
 hands.onResults(onResults);
-camera.start();
+//camera.start();
 
 let saved = out3.captureStream(60);
 
