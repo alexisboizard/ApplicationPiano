@@ -10,46 +10,48 @@
 </head>
 <body>
     <div class="cards">
+            <div class="card" id="card1">
+                <h2>Tutoriel</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+            </div>
+            <div class="card2" id="card2">
+                <h2>Tutoriel 2</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+            </div>
+            <div class="card3" id="card3">
+                <h2>Tutoriel 3</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+            </div>
         <div class="arrows">
-            <i class="fa-solid fa-arrow-left left-arrow"></i>
-            <i class="fa-solid fa-arrow-right right-arrow"></i>
+            <i class="fa-solid fa-arrow-left left-arrow" id="left-arrow"></i>
+            <i class="fa-solid fa-arrow-right right-arrow" id="right-arrow"></i>
         </div>
-        <div class="card">
-            <h2>Tutoriel</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
-        </div>
-        <div class="card2">
-            <h2>Tutoriel</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
-        </div>
-        <div class="card3">
-            <h2>Tutoriel</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
-        </div>
-
-    </div>
+    </div>  
     <style>
         .cards{
             width: 20vw;
             height: 70vh;
             margin-left: 40vw;
             margin-top: 15vh;
-            background-color: #000;
-        }
-        .card{
-            width: 20vw;
-            height: 70vh;
-            background-color: pink;
+            background-color: #2754bd;
             border-radius: 20px;
-            box-shadow: 12px 12px 2px 1px rgba(255, 0, 242, 0.2);
+            box-shadow: 12px 12px 2px 1px rgba(39, 84, 189, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        .card1,.card2,.card3{
+            height: 100%;
+        }
+        .card2,.card3{
+            display: none;
         }
         .arrows{
             font-size: 20px;
             display: flex;
             flex-direction: row;
-            margin-top: 80%;
             color:#fff;
             z-index: 2;
+            margin-bottom: 10%;
         }
         h2,p{
             text-align: center;
@@ -63,17 +65,20 @@
             margin-left: 10%;
         }
         .left-arrow{
+            padding: 2%;
             margin-left: 5%;
         }
         .right-arrow{
-            margin-left: 75%;
+            padding: 2%;
+
+            margin-left: 70%;
         }
         .arrows>i:hover{
             outline: solid 2px #fff;
             border-radius: 100%;
         }
         @media (max-width: 480px) and (min-width:320px){
-            .card{
+            .card1{
                 width: 60vw;
                 margin-left: 20vw;
                 height: 60vh;
@@ -81,5 +86,37 @@
             }
         }
     </style>
+    <script>
+        class tutorial{
+            constructor(nElement){
+                this.nElement = nElement;
+                this.current = 1;
+            }
+            nextSlide(){
+                console.log(this.current)
+                const currentSlide = document.getElementById("card"+this.current);
+                const nextSlide = document.getElementById("card" + this.current++);
+                console.log(nextSlide)
+                currentSlide.style.display = "none";
+                nextSlide.style.display = "block";
+            };
+            prevSlide(){
+                console.log("prev")
+                const currentSlide = document.getElementById("card"+ this.current);
+                const prevSlide = document.getElementById("card" + this.current--);
+                console.log(currentSlide, prevSlide)
+                currentSlide.style.display = "none";
+                prevSlide.style.display = "block";
+            };
+
+        }
+        const slider = new tutorial(3,1);
+        const prevArrow = document.getElementById("left-arrow");
+        const nextArrow = document.getElementById("right-arrow");
+
+        //prevArrow.addEventListener("click",slider.prevSlide())
+        //nextArrow.addEventListener("click",slider.nextSlide())  
+
+    </script>
 </body>
 </html>
