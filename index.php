@@ -22,6 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/tutorial.css">
 </head>
 <body>
     <a class="login-button fa-2x" href="login.php">
@@ -33,7 +34,28 @@
             }else{
                 echo "<h1> Bonjour Inconnu,</h1>";
             }
-    ?>    
+    ?>   
+    <div class="foreground"></div>
+    <div class="cards" id="tuto">
+        <i class="fa-solid fa-xmark" id="close" onclick="closeTuto()"></i>
+        <div class="card1" id="card1">
+            <h2 class="title-card">Tutoriel</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+        </div>
+        <div class="card2" id="card2">
+            <h2 class="title-card">Tutoriel 2</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+        </div>
+        <div class="card3" id="card3">
+            <h2 class="title-card">Tutoriel 3</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+        </div>
+        <div class="arrows">
+            <i class="fa-solid fa-arrow-left left-arrow" id="left" onclick="prev()"></i>
+            <i class="fa-solid fa-arrow-right right-arrow" id="right" onclick="next()"></i>
+        </div>
+
+    </div> 
     <div class="container test">
         <p class="first-para">Reprendre la leçon</p>
     </div>
@@ -59,31 +81,7 @@
             </div>
         </div>
     </div>
-    
     <?php include_once __DIR__ . ("/modules/footer.php"); ?>
-
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyDZ9pq_S1PKE54s9GTHssSaOd_JTAH6Duk",
-          authDomain: "ptut-79321.firebaseapp.com",
-          projectId: "ptut-79321",
-          storageBucket: "ptut-79321.appspot.com",
-          messagingSenderId: "1048719818176",
-          appId: "1:1048719818176:web:eb8ee66136779f759edc25",
-          measurementId: "G-X43F1MWQBZ"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-      </script>
+    <script src="/js/tutorial.js"></script>
 </body>
 </html>
