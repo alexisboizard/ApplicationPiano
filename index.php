@@ -50,10 +50,10 @@
                         <img src="../img-sae/plus.svg" alt="" srcset=""> pour démarrer une nouvelle leçon
                     </div>
                     <div class="tuto-part">
-                    <img src="../img-sae/video.svg" alt="" srcset=""> afin de voir les leçons que vous avez enregistrer
+                    <img src="../img-sae/video.svg" alt="" srcset=""> afin de voir les leçons que vous avez enregistrées
                     </div>
                     <div class="tuto-part">
-                        <img src="../img-sae/gear.svg" alt="" srcset=""> pour accéder au parametres de l'application
+                        <img src="../img-sae/gear.svg" alt="" srcset=""> pour accéder au paramètres de l'application
                     </div>
                 </div>
             </p>
@@ -61,13 +61,13 @@
         <div class="card2" id="card2">
             <h2 class="title-card">Tutoriel : Placement du téléphone</h2>
             <p>
-                Dans l'onglet pour démarer une nouvelle leçon, vous aurait le retour de la caméra avant de votre téléphone, il faudra alors placer votre smartphone à une distance d'environ 30cm au dessus de votre clavier, camera avant vers les touches.
+                Dans l'onglet pour démarrer une nouvelle leçon, vous aurez le retour de la caméra avant de votre téléphone, il faudra alors placer votre smartphone à une distance d'environ 30cm au dessus de votre clavier, caméra avant vers les touches.
             </p>
         </div>
         <div class="card3" id="card3">
             <h2 class="title-card">Tutoriel : Le fonctionnement</h2>
             <p>
-                Cette application analyse la position de vos doigts afin de vous donner des corrections pour que vous jouiez de façon optimal, elle utilise de l'intelligence artificielle pour savoir la position de vos doigts à toute instant.
+                Cette application analyse la position de vos doigts afin de vous donner des corrections pour que vous jouiez de façon optimal, elle utilise de l'intelligence artificielle pour savoir la position de vos doigts à tout instant.
             </p>
         </div>
         <div class="arrows">
@@ -80,7 +80,7 @@
         <p class="first-para">Reprendre la leçon</p>
     </div>
     <div class="stats">
-        <h2>Statistique du mois</h2> 
+        <h2>Statistiques du mois</h2> 
         <div class="container top">
             <p class="first-para"><em>Streaks</em></p>
             <p><strong>10 jours de pratique à la suite</strong></p>
