@@ -28,10 +28,10 @@
     </main>
 
     <footer class="navbar">
-        <a href="../home.php"><img src="../img-sae/home.svg" alt="icon"></a>
-        <a href="../lesson.php"><img src="../img-sae/plus.svg" alt="icon"></a>
-        <a href="../replay.php"><img src="../img-sae/video.svg" alt="icon"></a>
-        <a href="settings.php"><img src="../img-sae/gear.svg" alt="icon"></a>
+        <a href="../home.php"><img src="../img/home.svg" alt="icon"></a>
+        <a href="../lesson.php"><img src="../img/plus.svg" alt="icon"></a>
+        <a href="../replay.php"><img src="../img/video.svg" alt="icon"></a>
+        <a href="settings.php"><img src="../img/gear.svg" alt="icon"></a>
     </footer>
 </body>
 </html>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=T2dVkCcw"></script>
-    <script type="module" src="hands.js"></script>
+    <script type="module" src="js/hands.js"></script>
 </head>
 <body>
     

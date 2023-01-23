@@ -10,7 +10,7 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="lesson.css">
+    <link rel="stylesheet" href="css/lesson.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=Y2caizh6"></script>
-    <script type="module" src="hands.js"></script>
-    <script type="module" src="metronome.js"></script>
+    <script type="module" src="js/hands.js"></script>
+    <script type="module" src="js/metronome.js"></script>
 </body>
 </html>
