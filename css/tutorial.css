@@ -1,4 +1,5 @@
 .cards{
+    top: 10%;
     width: 20vw;
     height: 70vh;
     margin-left: 40vw;
@@ -52,8 +53,8 @@ p{
 }
 @media (max-width: 480px){
     .cards{
-        width: 60vw;
-        margin-left: 20vw;
+        width: 80vw;
+        margin-left: 10vw;
         height: 60vh;
     }
     .card1,.card2,.card3{
