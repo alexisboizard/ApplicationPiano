@@ -28,6 +28,9 @@ h2,p{
     text-align: center;
     color: #fff;
 }
+h2{
+    margin-bottom: 5%;
+}
 .title-card{
     margin-top: 20%;
 }
@@ -51,7 +54,7 @@ p{
     .cards{
         width: 60vw;
         margin-left: 20vw;
-        height: 70vh;
+        height: 60vh;
     }
     .card1,.card2,.card3{
         width: 90%;
@@ -62,4 +65,13 @@ p{
     p{
         margin-left: 10%;
     }
+}
+.tuto-part{
+    font-size: 0.90em;
+    font-weight: 50;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+.tuto-part>img{
+    width: 25px;
 }

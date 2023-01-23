@@ -5,5 +5,7 @@
             "Alexis\\PtutAppliPiano\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "ext-memcached": "*"
+    }
 }

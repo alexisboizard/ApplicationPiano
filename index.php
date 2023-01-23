@@ -39,16 +39,36 @@
     <div class="cards" id="tuto">
         <i class="fa-solid fa-xmark" id="close" onclick="closeTuto()"></i>
         <div class="card1" id="card1">
-            <h2 class="title-card">Tutoriel</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+            <h2 class="title-card">Tutoriel : La navigation</h2>
+            <p>
+                La navigation sur cette application se fait via le menu en bas de la page
+                <div class="nav-explain">
+                    <div class="tuto-part">
+                        <img src="../img-sae/home.svg" alt="" srcset=""> pour retourner à l'accueil
+                    </div>
+                    <div class="tuto-part">
+                        <img src="../img-sae/plus.svg" alt="" srcset=""> pour démarrer une nouvelle leçon
+                    </div>
+                    <div class="tuto-part">
+                    <img src="../img-sae/video.svg" alt="" srcset=""> afin de voir les leçons que vous avez enregistrer
+                    </div>
+                    <div class="tuto-part">
+                        <img src="../img-sae/gear.svg" alt="" srcset=""> pour accéder au parametres de l'application
+                    </div>
+                </div>
+            </p>
         </div>
         <div class="card2" id="card2">
-            <h2 class="title-card">Tutoriel 2</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+            <h2 class="title-card">Tutoriel : Placement du téléphone</h2>
+            <p>
+                Dans l'onglet pour démarer une nouvelle leçon, vous aurait le retour de la caméra avant de votre téléphone, il faudra alors placer votre smartphone à une distance d'environ 30cm au dessus de votre clavier, camera avant vers les touches.
+            </p>
         </div>
         <div class="card3" id="card3">
-            <h2 class="title-card">Tutoriel 3</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum pariatur quibusdam eius necessitatibus modi quidem tenetur at quisquam exercitationem</p>
+            <h2 class="title-card">Tutoriel : Le fonctionnement</h2>
+            <p>
+                Cette application analyse la position de vos doigts afin de vous donner des corrections pour que vous jouiez de façon optimal, elle utilise de l'intelligence artificielle pour savoir la position de vos doigts à toute instant.
+            </p>
         </div>
         <div class="arrows">
             <i class="fa-solid fa-arrow-left left-arrow" id="left" onclick="prev()"></i>
