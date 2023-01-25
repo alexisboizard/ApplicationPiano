@@ -30,7 +30,8 @@ function onResults(results) {
       let dist_index_gauche = Math.sqrt(Math.pow((results.multiHandLandmarks[0][8].x-results.multiHandLandmarks[0][5].x), 2)+Math.pow((results.multiHandLandmarks[0][8].y-results.multiHandLandmarks[0][5].y), 2)+Math.pow((results.multiHandLandmarks[0][8].z-results.multiHandLandmarks[0][5].z), 2));   
       let distanc = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));
       let distance_annulaire = Math.sqrt(Math.pow((results.multiHandLandmarks[0][13].x-results.multiHandLandmarks[0][16].x), 2)+Math.pow((results.multiHandLandmarks[0][13].y-results.multiHandLandmarks[0][16].y), 2)+Math.pow((results.multiHandLandmarks[0][13].z-results.multiHandLandmarks[0][16].z), 2));
-      let distance_majeur = Math.sqrt(Math.pow((results.multiHandLandmarks[0][12].x-results.multiHandLandmarks[0][9].x), 2)+Math.pow((results.multiHandLandmarks[0][12].y-results.multiHandLandmarks[0][9].y), 2)+Math.pow((results.multiHandLandmarks[0][12].z-results.multiHandLandmarks[0][9].z), 2)); 
+      let distance_majeur = Math.sqrt(Math.pow((results.multiHandLandmarks[0][12].x-results.multiHandLandmarks[0][9].x), 2)+Math.pow((results.multiHandLandmarks[0][12].y-results.multiHandLandmarks[0][9].y), 2)+Math.pow((results.multiHandLandmarks[0][12].z-results.multiHandLandmarks[0][9].z), 2));
+      let distance_pouce = Math.sqrt(Math.pow((results.multiHandLandmarks[0][2].x-results.multiHandLandmarks[0][4].x), 2)+Math.pow((results.multiHandLandmarks[0][2].y-results.multiHandLandmarks[0][4].y), 2)+Math.pow((results.multiHandLandmarks[0][2].z-results.multiHandLandmarks[0][4].z), 2));
 
       //console.log("Distance : ", distance);
 
@@ -46,7 +47,7 @@ function onResults(results) {
       let diff = now2.getTime() - now.getTime();
       if( diff > 5000){
         console.log("Correction")
-        correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auriculaire, distance_annulaire, distance_majeur);
+        correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auriculaire, distance_annulaire, distance_majeur, distance_pouce);
         now = new Date();
       }
     }
@@ -172,9 +173,9 @@ function generateString(length) {
 
 
 
-function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auriculaire, distance_annulaire, distance_majeur) {
+function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auriculaire, distance_annulaire, distance_majeur, distance_pouce) {
   let speech = false;
-  console.log("majeur : ", distance_majeur);
+  console.log("majeur : ", distance_pouce);
   if(speech == false){
     speech = true;
     if (angleindexmajeurgauche > 4.50) {
@@ -191,7 +192,7 @@ function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auri
       responsiveVoice.speak(text,"French Canadian Male");
     }
 
-    else if (distance_majeur < 0.185) {
+    else if (distance_majeur < 0.150) {
       console.log("detendez votre majeur : ", distance_majeur);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre majeur ";
@@ -205,10 +206,17 @@ function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auri
       responsiveVoice.speak(text,"French Canadian Male");
     }
 
-    else if (dist_index_gauche < 0.18) {
+    else if (dist_index_gauche < 0.15) {
       console.log("detendez votre index : ", dist_index_gauche);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre index ";
+      responsiveVoice.speak(text,"French Canadian Male");
+    }
+
+    else if (distance_pouce < 0.125) {
+      console.log("detendez votre pouce : ", distance_pouce);
+      var msg = new SpeechSynthesisUtterance();
+      let text = "Detendez votre pouce ";
       responsiveVoice.speak(text,"French Canadian Male");
     }
   }
@@ -218,7 +226,7 @@ let upload = document.getElementsByClassName("source-selection")[0];
 console.log(upload);
 upload.addEventListener("click",function(){
   camera.stop();
-  console.log("Ta mere")
+  console.log("")
 }); 
 
 /**
