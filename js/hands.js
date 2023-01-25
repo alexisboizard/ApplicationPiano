@@ -177,10 +177,10 @@ function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auri
   console.log("majeur : ", distance_majeur);
   if(speech == false){
     speech = true;
-    if (angleindexmajeurgauche > 4.20) {
-      console.log("Main gauche, rapprochez votre index de votre majeur !");
+    if (angleindexmajeurgauche > 4.50) {
+      console.log("Rapprochez votre index de votre majeur !");
       var msg = new SpeechSynthesisUtterance();
-      let text = "Main gauche, rapprochez votre index de votre majeur ";
+      let text = "Rapprochez votre index de votre majeur ";
       responsiveVoice.speak(text,"French Canadian Male");
     }
 
@@ -206,7 +206,7 @@ function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auri
     }
 
     else if (dist_index_gauche < 0.18) {
-      console.log("detendez votre index (main gauche): ", dist_index_gauche);
+      console.log("detendez votre index : ", dist_index_gauche);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre index ";
       responsiveVoice.speak(text,"French Canadian Male");
