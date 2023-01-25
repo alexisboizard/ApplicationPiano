@@ -25,13 +25,18 @@
     <link rel="stylesheet" href="/css/tutorial.css">
 </head>
 <body>
-    <a class="login-button fa-2x" href="login.php">
-        <img src="img/profil.svg" alt="" srcset="">
-    </a>
+
     <?php
             if(isset($_SESSION)){
+                echo '<a class="disconnect-button fa-2x" href="includes/disconnect.php">';
+                echo '<img src="img/disconnect.svg" alt="" srcset="">';
+                echo '</a>';
                 echo "<h1> Bonjour "  . $_SESSION["user"]["firstname"]. ", </h1>";
+                
             }else{
+                echo '<a class="login-button fa-2x" href="login.php">';
+                echo '<img src="img/profil.svg" alt="" srcset="">';
+                echo '</a>';
                 echo "<h1> Bonjour Inconnu,</h1>";
             }
     ?>   
@@ -44,16 +49,16 @@
                 La navigation sur cette application se fait via le menu en bas de la page
                 <div class="nav-explain">
                     <div class="tuto-part">
-                        <img src="../img-sae/home.svg" alt="" srcset=""> pour retourner à l'accueil
+                        <img src="../img/home.svg" alt="" srcset=""> pour retourner à l'accueil
                     </div>
                     <div class="tuto-part">
-                        <img src="../img-sae/plus.svg" alt="" srcset=""> pour démarrer une nouvelle leçon
+                        <img src="../img/plus.svg" alt="" srcset=""> pour démarrer une nouvelle leçon
                     </div>
                     <div class="tuto-part">
-                    <img src="../img-sae/video.svg" alt="" srcset=""> afin de voir les leçons que vous avez enregistrées
+                    <img src="../img/video.svg" alt="" srcset=""> afin de voir les leçons que vous avez enregistrées
                     </div>
                     <div class="tuto-part">
-                        <img src="../img-sae/gear.svg" alt="" srcset=""> pour accéder au paramètres de l'application
+                        <img src="../img/gear.svg" alt="" srcset=""> pour accéder au paramètres de l'application
                     </div>
                 </div>
             </p>
