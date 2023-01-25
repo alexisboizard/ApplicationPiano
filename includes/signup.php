@@ -5,13 +5,14 @@ include('database.php');
     $email = $_POST['email'];
     $password = $_POST['password'];
     $phone = $_POST['phone'];
+    $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
 
     $query = "SELECT * FROM users WHERE email = :email and password = :password and phone = :phone and firstname= :firstname and name = :name"; 
     $stmt = $db->prepare($query);
     $stmt->execute(
         [
             'email' => $email, 
-            'password' => $password, 
+            'password' => $hashedPassword,
             'phone' => $phone, 
             'firstname' => $firstname, 
             'name' => $name
@@ -29,7 +30,7 @@ include('database.php');
                 'firstname' => $firstname, 
                 'name' => $name, 
                 'email' => $email, 
-                'password' => $password, 
+                'password' => $hashedPassword, 
                 'phone' => $phone
             ]
         );
