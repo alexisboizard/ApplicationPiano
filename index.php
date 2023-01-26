@@ -58,7 +58,7 @@
                     <img src="../img/video.svg" alt="" srcset=""> afin de voir les leçons que vous avez enregistrées
                     </div>
                     <div class="tuto-part">
-                        <img src="../img/gear.svg" alt="" srcset=""> pour accéder au paramètres de l'application
+                        <img src="../img/gear.svg" alt="" srcset=""> pour accéder aux paramètres de l'application
                     </div>
                 </div>
             </p>
@@ -72,7 +72,7 @@
         <div class="card3" id="card3">
             <h2 class="title-card">Tutoriel : Le fonctionnement</h2>
             <p>
-                Cette application analyse la position de vos doigts afin de vous donner des corrections pour que vous jouiez de façon optimal, elle utilise de l'intelligence artificielle pour savoir la position de vos doigts à tout instant.
+                Cette application analyse la position de vos doigts afin de vous donner des corrections pour que vous jouiez de façon optimale, elle utilise de l'intelligence artificielle pour savoir la position de vos doigts à tout instant.
             </p>
         </div>
         <div class="arrows">
