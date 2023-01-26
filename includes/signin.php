@@ -23,15 +23,14 @@ if(isset($_POST['login'])){
             ]
         );
         $user = $stmt->fetch();
-        if(password_verify($password,$user['password'])){
-            $_SESSION['user']['firstname'] = $user['firstname'];
-            $_SESSION['user']['email'] = $user['email'];
-            $_SESSION['user']['id'] = $user['ID'];
-            header('Location: ../index.php');
-            ob_end_flush();
-        }else{
-            $error = "Incorrect email or password";
-        }
+        $_SESSION['user']['firstname'] = $user['firstname'];
+        $_SESSION['user']['email'] = $user['email'];
+        $_SESSION['user']['id'] = $user['ID'];
+        header('Location: ../index.php');
+        ob_end_flush();
+
+    }else{
+        $error = "Incorrect email or password";
     }
 }
 
