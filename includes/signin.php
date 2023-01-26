@@ -15,8 +15,6 @@ if(isset($_POST['login'])){
     $stmt = $db->prepare($sql);
     $stmt->execute(['email' => $email]);
     $user = $stmt->fetch();
-    var_dump($user);
-    echo $email;
 
     if($user){
         $sql = "SELECT * FROM users WHERE email = :email";
