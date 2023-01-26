@@ -8,8 +8,6 @@ if(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
-    var_dump($hashedPassword);
-
 
     $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $db->prepare($sql);
