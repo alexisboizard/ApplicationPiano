@@ -27,7 +27,6 @@ if(isset($_POST['login'])){
             ]
         );
         $user = $stmt->fetch();
-        echo $user["password"];
         if(password_verify($password,$user['password'])){
             $_SESSION['user']['firstname'] = $user['firstname'];
             $_SESSION['user']['email'] = $user['email'];
