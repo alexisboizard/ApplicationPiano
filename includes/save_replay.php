@@ -14,17 +14,18 @@ function genererChaineAleatoire($longueur = 10)
  return $chaineAleatoire;
 }
 
-$data = file_get_contents('php://input');
+$data = new MongoDB\BSON\Binary(file_get_contents('php://input'), MongoDB\BSON\Binary::TYPE_GENERIC);
+
 $name = time() . "-" .genererChaineAleatoire(10) . ".mp4";
 
+
+
+$collection = $client->ptut->replay;
 if(isset($_SESSION)){
-    $statment = $db->prepare("INSERT INTO replay values(:id,:name,:data,:userId,:date)");
-    $statment->execute(array(
-        'id' => null,
+    $collection->insertOne([
         'name' => $name,
         'data' => $data,
         'userId' => $_SESSION["user"]["id"],
         'date' => date_create()->format('Y-m-d H:i:s')
-    ));
-    $tets = $statment->fetch();
+    ]);
 }

@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+ php:
+  build:
+   context: .
+   dockerfile: dockerfile
+  container_name: ptut
+  image: php:8.0-apache
+  volumes:
+   - ./php:/var/www/html/
+  ports:
+   - 80:80

@@ -9,6 +9,7 @@
     $_SESSION['history']['last-page'] = $_SESSION['history']['actual-page'];
     $_SESSION['history']['actual-page'] = 'home.php';
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

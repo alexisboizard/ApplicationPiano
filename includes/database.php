@@ -1,11 +1,7 @@
 <?php
-$dsn = "sqlite:" . __DIR__ . "/../database.db";
+require __DIR__ . '/../vendor/autoload.php'; // include Composer's autoloader
 
-try{
-    $db = new PDO($dsn);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-}catch(PDOEcxeption $e){
-    echo $e->getMessage();
-}
+$client = new MongoDB\Client(
+    'mongodb://localhost:27017/'
+);
 

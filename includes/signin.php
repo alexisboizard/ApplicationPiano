@@ -9,24 +9,16 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];
     $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
 
-    $sql = "SELECT * FROM users WHERE email = :email";
-    $stmt = $db->prepare($sql);
-    $stmt->execute(['email' => $email]);
-    $user = $stmt->fetch();
-    if($user){
-        $sql = "SELECT * FROM users WHERE email = :email";
-        $stmt = $db->prepare($sql);
-        $stmt->execute(
-            [
-                'email' => $email, 
-            ]
-        );
-        $user = $stmt->fetch();
+    $collection = $client->ptut->users;
+    $user = $collection->findOne([
+        'email' => $email,
+    ]);
+
+    if($user != NULL){
         $_SESSION['user']['firstname'] = $user['firstname'];
         $_SESSION['user']['email'] = $user['email'];
-        $_SESSION['user']['id'] = $user['ID'];
+        $_SESSION['user']['id'] = ((string)$user['_id']);
         header('Location: ../index.php');
-        ob_end_flush();
 
     }else{
         $error = "Incorrect email or password";

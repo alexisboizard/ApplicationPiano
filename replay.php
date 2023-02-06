@@ -24,18 +24,16 @@
         ob_start();
         include('includes/database.php');
 
-        $stmt = $db->prepare("SELECT * FROM replay where userId = :id");
-        $stmt->execute(
-            [
-                'id' => $_SESSION['user']['id']
-            ]
-            );
-        $result = $stmt->fetchAll();
+        $collection = $client->ptut->replay;
+        $result = $collection->find([
+            'userId' => $_SESSION['user']['id']
+        ]);
+        
         $cpt = 1;
         $output = ob_get_clean();
         echo "<div class='container'>";
         foreach($result as $i){
-            echo '<a href="?id='.$i['id'].'">';
+            echo '<a href="?id='.$i['_id'].'">';
             echo '<div class="content">';
             echo '<p class="first-para"> Leçon n°'.$cpt.'</p>';  
             echo '<p>'.$i["date"].'</p>';
@@ -46,15 +44,7 @@
         echo "</div>"
     ?>
     <video></video>
-    <script>
-        function showVideo(id){
-            let vidID = id;
-            fetch(`includes/show_replay.php`, {method:"GET", body:vidID})
-            .then(response => {
-                console.log(response)
-            })  
-        }
-    </script>
+
     
     <?php include_once __DIR__ . ("/modules/footer.php"); ?>
 </body>
