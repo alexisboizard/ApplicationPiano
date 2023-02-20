@@ -1,13 +1,22 @@
 version: '3.3'
 
 services:
- php:
-  build:
-   context: .
-   dockerfile: dockerfile
-  container_name: ptut
-  image: php:8.0-apache
-  volumes:
-   - ./php:/var/www/html/
-  ports:
-   - 80:80
+  app:
+    image: ptut-php-app:latest
+    ports:
+      - 80:80
+    restart: always
+    
+  db:
+    depends_on:
+      - app
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    expose:
+      - "27017"
+    volumes:
+      - ./mongod.conf:/etc/mongod.conf.orig
+
+        

@@ -21,6 +21,7 @@ $name = time() . "-" .genererChaineAleatoire(10) . ".mp4";
 
 
 $collection = $client->ptut->replay;
+
 if(isset($_SESSION)){
     $collection->insertOne([
         'name' => $name,

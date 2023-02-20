@@ -13,13 +13,11 @@ if(isset($_POST['login'])){
     $user = $collection->findOne([
         'email' => $email,
     ]);
-
-    if($user != NULL){
+    if(password_verify($password,$user['password']) && $user != NULL){
         $_SESSION['user']['firstname'] = $user['firstname'];
         $_SESSION['user']['email'] = $user['email'];
         $_SESSION['user']['id'] = ((string)$user['_id']);
         header('Location: ../index.php');
-
     }else{
         $error = "Incorrect email or password";
     }
