@@ -1,3 +1,4 @@
+
 <?php 
     session_start();
     if(!isset($_SESSION['user'])){
@@ -12,36 +13,32 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/index.css">
+    <title> PianoHelper </title>
+    <link rel="stylesheet" href="/css/index.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Signika&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/tutorial.css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js" integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   </head>
 <body>
-
+<?php include_once __DIR__ . ("/modules/side_navabar.php"); ?>
+  <section class="home-section">
     <?php
-            if(isset($_SESSION)){
-                echo '<a class="disconnect-button fa-2x" href="includes/disconnect.php">';
-                echo '<img src="img/disconnect.svg" alt="" srcset="">';
-                echo '</a>';
-                echo "<h1> Bonjour "  . $_SESSION["user"]["firstname"]. ", </h1>";
-                
-            }else{
-                echo '<a class="login-button fa-2x" href="login.php">';
-                echo '<img src="img/profil.svg" alt="" srcset="">';
-                echo '</a>';
-                echo "<h1> Bonjour Inconnu,</h1>";
-            }
-    ?>   
-    <div class="foreground"></div>
+        if(isset($_SESSION)){
+            echo "<h1> Bonjour "  . $_SESSION["user"]["firstname"]. ", </h1>";
+            
+        }else{
+            echo "<h1> Bonjour Inconnu,</h1>";
+        }
+    ?>
     <div class="cards" id="tuto">
         <i class="fa-solid fa-xmark" id="close" onclick="closeTuto()"></i>
         <div class="card1" id="card1">
@@ -86,7 +83,7 @@
         <p class="first-para">Reprendre la leçon</p>
     </div>
     <div class="stats">
-        <h2>Statistiques du mois</h2> 
+        <h3>Statistiques du mois</h3> 
         <div class="container top">
             <p class="first-para"><em>Streaks</em></p>
             <p><strong>10 jours de pratique à la suite</strong></p>
@@ -107,7 +104,20 @@
             </div>
         </div>
     </div>
-    <?php include_once __DIR__ . ("/modules/footer.php"); ?>
-    <script src="/js/tutorial.js"></script>
+    
+  </section>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="module" src="firebase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script type="module" src="js/hands.js"></script>
+  <script type="module" src="js/fonctions.js"></script>
+  <script type="module" src="js/metronome.js"></script>
+  <script src="js/tutorial.js"></script>
+  <script src="script.js"></script>
+
 </body>
 </html>

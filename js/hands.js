@@ -1,4 +1,6 @@
 const video3 = document.getElementsByClassName("input3")[0];
+var cal1 = document.querySelector('.calibrage1');
+var cal2 = document.querySelector('.calibrage2');
 const out3 = document.getElementsByClassName("output3")[0];
 const controlsElement = document.getElementsByClassName("control3")[0];
 const controls = window;
@@ -7,8 +9,7 @@ const button = document.getElementById("start");
 const square = document.getElementById("square");
 const circle = document.getElementById("circle");
 const fpsControl = new FPS();
-const drawingUtils = window;
-const mpHands = window;
+
 let width = 1280;
 let height = 720;
 
@@ -18,33 +19,48 @@ function onResults(results) {
   canvasCtx.save();
   canvasCtx.clearRect(0, 0, out3.width, out3.height);
   canvasCtx.drawImage(results.image, 0, 0, out3.width, out3.height);
-  if (results.multiHandLandmarks.length != 0) {
-    for (let index = 0; index < results.multiHandLandmarks.length; index++) {
-      const classification = results.multiHandedness[index];
-      const isRightHand = classification.label === 'Right';
-      const landmarks = results.multiHandLandmarks[index];
-      drawingUtils.drawConnectors(canvasCtx, landmarks, mpHands.HAND_CONNECTIONS, { color: isRightHand ? '#00FF00' : '#FF0000' });
-      drawingUtils.drawLandmarks(canvasCtx, landmarks, {
-          color: isRightHand ? '#00FF00' : '#FF0000',
-          fillColor: isRightHand ? '#FF0000' : '#00FF00',
-      })  
+  if (results.multiHandLandmarks) {
+    for (const landmarks of results.multiHandLandmarks) {
+      console.log("X = ", results.multiHandLandmarks[0][0].x);
+      console.log("Y = ", results.multiHandLandmarks[0][0].y);
+      console.log("Z = ", results.multiHandLandmarks[0][0].z);
+      console.log("   ");
+      console.log("   ");
+      console.log("   ");
+      drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
+        color: "#00FF00",
+        lineWidth: 5,
+      });
+      drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
+      //console.log(results.multiHandLandmarks);
+      let distance_auriculaire = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));   
+      let dist_index_gauche = Math.sqrt(Math.pow((results.multiHandLandmarks[0][8].x-results.multiHandLandmarks[0][5].x), 2)+Math.pow((results.multiHandLandmarks[0][8].y-results.multiHandLandmarks[0][5].y), 2)+Math.pow((results.multiHandLandmarks[0][8].z-results.multiHandLandmarks[0][5].z), 2));   
+      let distanc = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));
+      let distance_annulaire = Math.sqrt(Math.pow((results.multiHandLandmarks[0][13].x-results.multiHandLandmarks[0][16].x), 2)+Math.pow((results.multiHandLandmarks[0][13].y-results.multiHandLandmarks[0][16].y), 2)+Math.pow((results.multiHandLandmarks[0][13].z-results.multiHandLandmarks[0][16].z), 2));
+      let distance_majeur = Math.sqrt(Math.pow((results.multiHandLandmarks[0][12].x-results.multiHandLandmarks[0][9].x), 2)+Math.pow((results.multiHandLandmarks[0][12].y-results.multiHandLandmarks[0][9].y), 2)+Math.pow((results.multiHandLandmarks[0][12].z-results.multiHandLandmarks[0][9].z), 2));
+      let distance_pouce = Math.sqrt(Math.pow((results.multiHandLandmarks[0][2].x-results.multiHandLandmarks[0][4].x), 2)+Math.pow((results.multiHandLandmarks[0][2].y-results.multiHandLandmarks[0][4].y), 2)+Math.pow((results.multiHandLandmarks[0][2].z-results.multiHandLandmarks[0][4].z), 2));
+
+      //console.log("Distance : ", distance);
 
 
-      let handsDistance = getFingerDistance(results.multiHandLandmarks);
-      let handsAngle = getFingerAngle(results.multiHandLandmarks);
-      let hand = isRightHand ? "Main Droite" : "Main Gauche";
-      
+      let radianindexmajeurgauche = Math.atan(results.multiHandLandmarks[0][8].x - results.multiHandLandmarks[0][12].x, results.multiHandLandmarks[0][8].y - results.multiHandLandmarks[0][12].y) - Math.atan(results.multiHandLandmarks[0][9].x - results.multiHandLandmarks[0][12].x, results.multiHandLandmarks[0][9].y - results.multiHandLandmarks[0][12].y);
+      let angleindexmajeurgauche = Math.abs(radianindexmajeurgauche*180.0/Math.PI);
+      if (angleindexmajeurgauche > 180.0) {
+        angleindexmajeurgauche = 360-angleindexmajeurgauche;
+      }
+      //console.log("Angle entre l'index et le majeur (main gauche): ", angleindexmajeurgauche);
+      //console.log("detendez votre index (main gauche): ", dist_index_gauche);
       let now2 = new Date()
       let diff = now2.getTime() - now.getTime();
       if( diff > 5000){
         console.log("Correction")
-        correctionMain(handsDistance, handsAngle, hand)        
+        correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auriculaire, distance_annulaire, distance_majeur, distance_pouce);
         now = new Date();
       }
-
+    }
   }
-}
-
+  // coordonne des points
+  //console.log(results.multiHandLandmarks);
   canvasCtx.restore();
 }
 const hands = new Hands({
@@ -52,6 +68,11 @@ const hands = new Hands({
     return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
   },
 });
+
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+  /* your code here */
+}
 
 const camera = new Camera(video3, {
   onFrame: async () => {
@@ -92,13 +113,9 @@ let appui = false;
 
 function startRecording() {
   if (appui === false) {
-    circle.style.display = "none";
-    square.style.display = "block";
     recorder.start();
     appui = true;
   } else {
-    square.style.display = "none";
-    circle.style.display = "block";
     recorder.stop();
     appui = false;
   }
@@ -159,80 +176,52 @@ function generateString(length) {
 
 
 
-function correctionMain(handsDistance, handsAngle, hand) {
+function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auriculaire, distance_annulaire, distance_majeur, distance_pouce) {
   let speech = false;
-  let text = "";
-
+  console.log("majeur : ", distance_pouce);
   if(speech == false){
     speech = true;
-
-    if (handsAngle.angleindexmajeurgauche > 4.50) {
-      text= hand +"Rapprochez votre index de votre majeur ";
-      console.log(text);
-      responsiveVoice.speak(text,"French Canadian Male");
+    if (angleindexmajeurgauche > 4.50) {
+      console.log("Rapprochez votre index de votre majeur !");
+      var msg = new SpeechSynthesisUtterance();
+      let text = "Rapprochez votre index de votre majeur ";
+      //responsiveVoice.speak(text,"French Canadian Male");
     }
 
-    else if (handsDistance.annulaire < 0.135) {
-      text= hand +"Detendez votre annulaire ";
-      console.log(text, handsDistance.annulaire);
-      responsiveVoice.speak(text,"French Canadian Male");
+    else if (distance_annulaire < 0.135) {
+      console.log("detendez votre annulaire : ", distance_annulaire);
+      var msg = new SpeechSynthesisUtterance();
+      let text = "Detendez votre annulaire ";
+      //responsiveVoice.speak(text,"French Canadian Male");
     }
 
-    else if (handsDistance.majeur < 0.150) {
-      text= hand +"Detendez votre majeur ";
-      console.log(text, handsDistance.majeur);
-      responsiveVoice.speak(text,"French Canadian Male");
+    else if (distance_majeur < 0.150) {
+      console.log("detendez votre majeur : ", distance_majeur);
+      var msg = new SpeechSynthesisUtterance();
+      let text = "Detendez votre majeur ";
+      //responsiveVoice.speak(text,"French Canadian Male");
     }
 
-    else if (handsDistance.auriculaire< 0.09) {
-      text= hand +"Detendez votre auriculaire ";
-      console.log(text, handsDistance.auriculaire);
-      responsiveVoice.speak(text,"French Canadian Male");
+    else if (distance_auriculaire < 0.09) {
+      console.log("detendez votre auriculaire : ", distance_auriculaire);
+      var msg = new SpeechSynthesisUtterance();
+      let text = "Detendez votre auriculaire ";
+      //responsiveVoice.speak(text,"French Canadian Male");
     }
 
-    else if (handsDistance.index < 0.15) {
-      text= hand +"Detendez votre index ";
-      console.log(text, handsDistance.index);
-      responsiveVoice.speak(text,"French Canadian Male");
+    else if (dist_index_gauche < 0.15) {
+      console.log("detendez votre index : ", dist_index_gauche);
+      var msg = new SpeechSynthesisUtterance();
+      let text = "Detendez votre index ";
+      //responsiveVoice.speak(text,"French Canadian Male");
     }
 
-    else if (handsDistance.pouce < 0.125) {
-      text= hand +"Detendez votre pouce ";
-      console.log(text, handsDistance.pouce);
-      responsiveVoice.speak(text,"French Canadian Male");
+    else if (distance_pouce < 0.125) {
+      console.log("detendez votre pouce : ", distance_pouce);
+      var msg = new SpeechSynthesisUtterance();
+      let text = "Detendez votre pouce ";
+      //responsiveVoice.speak(text,"French Canadian Male");
     }
-  }
-}
-
-
-function getFingerDistance(landmarks){
-    let distance_auriculaire = Math.sqrt(Math.pow((landmarks[0][17].x-landmarks[0][20].x), 2)+Math.pow((landmarks[0][17].y-landmarks[0][20].y), 2)+Math.pow((landmarks[0][17].z-landmarks[0][20].z), 2));   
-    let dist_index_gauche = Math.sqrt(Math.pow((landmarks[0][8].x-landmarks[0][5].x), 2)+Math.pow((landmarks[0][8].y-landmarks[0][5].y), 2)+Math.pow((landmarks[0][8].z-landmarks[0][5].z), 2));   
-    let distanc = Math.sqrt(Math.pow((landmarks[0][17].x-landmarks[0][20].x), 2)+Math.pow((landmarks[0][17].y-landmarks[0][20].y), 2)+Math.pow((landmarks[0][17].z-landmarks[0][20].z), 2));
-    let distance_annulaire = Math.sqrt(Math.pow((landmarks[0][13].x-landmarks[0][16].x), 2)+Math.pow((landmarks[0][13].y-landmarks[0][16].y), 2)+Math.pow((landmarks[0][13].z-landmarks[0][16].z), 2));
-    let distance_majeur = Math.sqrt(Math.pow((landmarks[0][12].x-landmarks[0][9].x), 2)+Math.pow((landmarks[0][12].y-landmarks[0][9].y), 2)+Math.pow((landmarks[0][12].z-landmarks[0][9].z), 2));
-    let distance_pouce = Math.sqrt(Math.pow((landmarks[0][2].x-landmarks[0][4].x), 2)+Math.pow((landmarks[0][2].y-landmarks[0][4].y), 2)+Math.pow((landmarks[0][2].z-landmarks[0][4].z), 2));
-  let fingerDistance = {
-    auriculaire: distance_auriculaire,
-    index: dist_index_gauche,
-    annulaire: distance_annulaire,
-    majeur: distance_majeur,
-    pouce: distance_pouce
-  }
-
-  return fingerDistance
-}
-
-function getFingerAngle(landmarks){
-
-  let radianindexmajeurgauche = Math.atan(landmarks[0][8].x - landmarks[0][12].x, landmarks[0][8].y - landmarks[0][12].y) - Math.atan(landmarks[0][9].x - landmarks[0][12].x, landmarks[0][9].y - landmarks[0][12].y);
-  let angleindexmajeurgauche = Math.abs(radianindexmajeurgauche*180.0/Math.PI);
-  if (angleindexmajeurgauche > 180.0) {
-    angleindexmajeurgauche = 360-angleindexmajeurgauche;
-  }
-
-  return {
-    indexMajeurGauche: angleindexmajeurgauche
   }
 }
 
@@ -240,6 +229,7 @@ let upload = document.getElementsByClassName("source-selection")[0];
 console.log(upload);
 upload.addEventListener("click",function(){
   camera.stop();
+  console.log("")
 }); 
 
 /**

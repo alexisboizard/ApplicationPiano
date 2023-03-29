@@ -15,10 +15,7 @@ function genererChaineAleatoire($longueur = 10)
 }
 
 $data = new MongoDB\BSON\Binary(file_get_contents('php://input'), MongoDB\BSON\Binary::TYPE_GENERIC);
-
 $name = time() . "-" .genererChaineAleatoire(10) . ".mp4";
-
-
 
 $collection = $client->ptut->replay;
 
