@@ -31,13 +31,6 @@ if(isset($_SESSION['user']['firstname']) && isset($_SESSION['user']['email']) &&
        </a>
        <span class="tooltip">Séance</span>
      </li>
-      <li>
-       <a href="calibrage.php">
-         <i class='bx bx-area' ></i>
-         <span class="links_name">Calibrage</span>
-       </a>
-       <span class="tooltip">Calibrage</span>
-     </li>
      <li>
        <a href="replay.php">
          <i class='bx bx-save'></i>
@@ -61,14 +54,14 @@ if(isset($_SESSION['user']['firstname']) && isset($_SESSION['user']['email']) &&
            </div>
          </div>
          <?php
-            if(isset($_SESSION)){?>
+            if(isset($_SESSION['user'])){?>
                 <a href="../includes/disconnect.php">
                   <i class='bx bx-log-out' id="log_out" ></i>
                 </a>
                 <?php
             }else{
                 ?>
-                <a href="">
+                <a href="../login.php">
                   <i class='bx bx-log-in' id="log_out" ></i>
                 </a>
                 <?php
