@@ -170,7 +170,7 @@
   border-radius: 12px;
 }
 .sidebar li.profile{
-  position: fixed;
+  position: absolute;
   height: 60px;
   width: 78px;
   left: 0;
@@ -248,26 +248,14 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 main{
     display: flex;
-    margin-right:180px;
-    flex-direction: line;
-    
+    flex-direction: column;
   }
   .camera{
-    width:1300px;
-    height: 740px;
+    margin-top: 5%;
+    width:100%;
+    height: 100%;
     border-radius: 5vw;
     display: flex;
     justify-content: center;
