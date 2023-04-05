@@ -120,6 +120,7 @@ hands.setOptions({
   minTrackingConfidence: 0.9,
 });
 hands.onResults(onResults);
+
 //camera.start();
 
 let saved = out3.captureStream(60);
@@ -180,8 +181,6 @@ new controls
     ])
 
 start.addEventListener("click", startRecording);
-
-
 
 cal1.addEventListener("click", calibrage1(onResults, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce, distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2));
 cal2.addEventListener("click", calibrage2(onResults, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2, distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce));
