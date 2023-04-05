@@ -21,12 +21,7 @@ function onResults(results) {
   canvasCtx.drawImage(results.image, 0, 0, out3.width, out3.height);
   if (results.multiHandLandmarks) {
     for (const landmarks of results.multiHandLandmarks) {
-      console.log("X = ", results.multiHandLandmarks[0][0].x);
-      console.log("Y = ", results.multiHandLandmarks[0][0].y);
-      console.log("Z = ", results.multiHandLandmarks[0][0].z);
-      console.log("   ");
-      console.log("   ");
-      console.log("   ");
+
       drawConnectors(canvasCtx, landmarks, HAND_CONNECTIONS, {
         color: "#00FF00",
         lineWidth: 5,
@@ -185,42 +180,42 @@ function correctionMain(angleindexmajeurgauche, dist_index_gauche, distance_auri
       console.log("Rapprochez votre index de votre majeur !");
       var msg = new SpeechSynthesisUtterance();
       let text = "Rapprochez votre index de votre majeur ";
-      //responsiveVoice.speak(text,"French Canadian Male");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
 
     else if (distance_annulaire < 0.135) {
       console.log("detendez votre annulaire : ", distance_annulaire);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre annulaire ";
-      //responsiveVoice.speak(text,"French Canadian Male");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
 
     else if (distance_majeur < 0.150) {
       console.log("detendez votre majeur : ", distance_majeur);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre majeur ";
-      //responsiveVoice.speak(text,"French Canadian Male");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
 
     else if (distance_auriculaire < 0.09) {
       console.log("detendez votre auriculaire : ", distance_auriculaire);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre auriculaire ";
-      //responsiveVoice.speak(text,"French Canadian Male");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
 
     else if (dist_index_gauche < 0.15) {
       console.log("detendez votre index : ", dist_index_gauche);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre index ";
-      //responsiveVoice.speak(text,"French Canadian Male");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
 
     else if (distance_pouce < 0.125) {
       console.log("detendez votre pouce : ", distance_pouce);
       var msg = new SpeechSynthesisUtterance();
       let text = "Detendez votre pouce ";
-      //responsiveVoice.speak(text,"French Canadian Male");
+      responsiveVoice.speak(text,"French Canadian Male");
     }
   }
 }

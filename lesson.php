@@ -50,6 +50,7 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
     
   </section>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://code.responsivevoice.org/responsivevoice.js?key=Y2caizh6"></script>
   <script type="module" src="firebase.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
