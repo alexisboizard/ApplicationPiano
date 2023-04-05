@@ -14,7 +14,7 @@ const addBeats = document.querySelector('.add-beats');
 const measureCount = document.querySelector('.measure-count');
 */
 
-const click1 = new Audio('tac.mp3');
+const click1 = new Audio('../sounds/tac.mp3');
 //const click2 = new Audio('click2.mp3');
 
 let bpm = 60;

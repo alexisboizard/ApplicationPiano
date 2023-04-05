@@ -47,7 +47,6 @@ if(isset($_SESSION['user']['firstname']) && isset($_SESSION['user']['email']) &&
      </li>
      <li class="profile">
          <div class="profile-details">
-           <img src="profile.jpg" alt="profileImg">
            <div class="name_job">
              <div class="name"><?php echo $nom1 ?></div>
              <div class="job"><?php echo $email1 ?></div>
@@ -67,7 +66,6 @@ if(isset($_SESSION['user']['firstname']) && isset($_SESSION['user']['email']) &&
                 <?php
             }
           ?>
-         
      </li>
     </ul>
 </div>

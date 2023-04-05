@@ -30,7 +30,7 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
       </div>
     </article>
 
-    <div id="col">
+    <div class="col">
       <div id=col1>
         <button class="calibrage1"> CAL 1 </button>
       </div>
@@ -66,16 +66,14 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
   </section>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="https://code.responsivevoice.org/responsivevoice.js?key=Y2caizh6"></script>
-  <script type="module" src="firebase.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg/dist/ffmpeg.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
   <script type="module" src="js/hands.js"></script>
-  <script type="module" src="js/fonctions.js"></script>
   <script type="module" src="js/metronome.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/sidebar.js"></script>
 
 </body>
 </html>
