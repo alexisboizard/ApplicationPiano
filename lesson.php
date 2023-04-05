@@ -10,6 +10,7 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title> PianoHelper </title>
     <link rel="stylesheet" href="/css/lesson.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

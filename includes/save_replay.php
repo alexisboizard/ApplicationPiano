@@ -17,10 +17,10 @@ function genererChaineAleatoire($longueur = 10)
 $data = new MongoDB\BSON\Binary(file_get_contents('php://input'), MongoDB\BSON\Binary::TYPE_GENERIC);
 $name = time() . "-" .genererChaineAleatoire(10) . ".mp4";
 
-$collection = $client->ptut->replay;
+
 
 if(isset($_SESSION)){
-    $collection->insertOne([
+    $collection_replay->insertOne([
         'name' => $name,
         'data' => $data,
         'userId' => $_SESSION["user"]["id"],

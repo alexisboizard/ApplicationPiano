@@ -19,6 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title> PianoHelper </title>
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/sidebar.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -117,7 +118,7 @@
   <script type="module" src="js/fonctions.js"></script>
   <script type="module" src="js/metronome.js"></script>
   <script src="js/tutorial.js"></script>
-  <script src="script.js"></script>
+  <script src="js/sidebar.js"></script>
 
 </body>
 </html>

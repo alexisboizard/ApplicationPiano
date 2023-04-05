@@ -100,9 +100,9 @@ let chunks = [];
 recorder.ondataavailable = function (e) {
   chunks.push(e.data);
 };
-recorder.onstop = function (e) {
+recorder.onstop = async function (e) {
   let blob = new Blob(chunks, { type: "video/mp4" });
-  fetch(`includes/save_replay.php`, {method:"POST", body:blob})
+  await fetch(`includes/save_replay.php`, {method:"POST", body:blob})
                 .then(response => {
                   console.log(response)
                   notification.showToast();
