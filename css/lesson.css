@@ -216,24 +216,24 @@ main{
     0 7.8px 17.9px rgba(0, 0, 0, 0.059), 0 14.6px 33.4px rgba(0, 0, 0, 0.059),
     0 35px 80px rgba(0, 0, 0, 0.07);
   cursor: pointer;
-  height: 100px;
+  height: 70px;
   position: absolute;
-  width: 100px;
+  width: 70px;
 }
 .boutonRecord:active .fondRecord {
   background: rgba(4,29,88,1);
 }
 .iconeRecord {
-  height: 200px;
+  height: 100px;
   transform: rotate(-120deg);
   transition: transform 500ms;
-  width: 200px;
+  width: 100px;
 }
 .partie {
   background: white;
-  height: 200px;
+  height: 100px;
   position: absolute;
-  width: 200px;
+  width: 100px;
 }
 .gauche {
   clip-path: polygon(
@@ -527,7 +527,12 @@ main{
 
 
 
-
+#col {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 
 
@@ -537,12 +542,16 @@ main{
 
 
 
-button {
+.start-stop {
   display: flex;
   flex-direction: row;
+  height: 75px;
+  width: 150px;
   justify-content: center;
   align-items: center;
   padding: 15px 38px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-radius: 16px;
   border: 1px solid transparent;
   color: #FFFFFF;
@@ -552,21 +561,21 @@ button {
   transition: all 0.15s linear;
  }
  
- button:hover {
+ .start-stop:hover {
   background-color: rgba(29, 201, 160, 0.08);
   border-color: rgba(4,29,88,1);
   color: rgba(4,29,88,1);
   transform: translateY(-5px) scale(1.05);
  }
  
- button:active {
+ .start-stop:active {
   background-color: transparent;
   border-color: rgba(4,29,88,1);
   color: rgba(4,29,88,1);
   transform: translateY(5px) scale(0.95);
  }
  
- button:disabled {
+ .start-stop:disabled {
   background-color: rgba(255, 255, 255, 0.16);
   color: #8E8E93;
   border-color: #8E8E93;
@@ -585,6 +594,8 @@ button {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: 75px;
+  width: 150px;
   padding: 15px 38px;
   border-radius: 16px;
   border: 1px solid transparent;
@@ -631,6 +642,8 @@ button {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  height: 75px;
+  width: 150px;
   padding: 15px 38px;
   border-radius: 16px;
   border: 1px solid transparent;
@@ -656,6 +669,48 @@ button {
  }
  
  .calibrage2:disabled {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #8E8E93;
+  border-color: #8E8E93;
+ }
+
+
+
+/** BOUTON UPLOAD **/
+
+
+.upload1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  width: 150px;
+  padding: 15px 38px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  color: #FFFFFF;
+  background-color: rgba(4,29,88,1);
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: all 0.15s linear;
+ }
+ 
+ .upload1:hover {
+  background-color: rgba(29, 201, 160, 0.08);
+  border-color: rgba(4,29,88,1);
+  color: rgba(4,29,88,1);
+  transform: translateY(-5px) scale(1.05);
+ }
+ 
+ .upload1:active {
+  background-color: transparent;
+  border-color: rgba(4,29,88,1);
+  color: rgba(4,29,88,1);
+  transform: translateY(5px) scale(0.95);
+ }
+ 
+ .upload1:disabled {
   background-color: rgba(255, 255, 255, 0.16);
   color: #8E8E93;
   border-color: #8E8E93;

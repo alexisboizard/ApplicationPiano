@@ -30,22 +30,37 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
       </div>
     </article>
 
-    <aside>
-      
-      <button> START </button>
-      <script type="text/javascript">
-          // Ici on apelle la fonction
-      </script>
-      <div id="start" class="boutonRecord" onclick="this.classList.toggle('active')">
-        <div class="fondRecord" x="0" y="0" width="200" height="200"></div>
-        <div class="iconeRecord" width="200" height="200">
-          <div class="partie gauche" x="0" y="0" width="200" height="200" fill="#fff"></div>
-          <div class="partie droite" x="0" y="0" width="200" height="200" fill="#fff"></div>
-        </div>
-        <div class="point"></div>
+    <div id="col">
+      <div id=col1>
+        <button class="calibrage1"> CAL 1 </button>
       </div>
-      <button class="control3">Upload</button>
-    </aside>
+
+      <div id=col2>
+        <button class="calibrage2"> CAL 2 </button>
+      </div>
+
+      <div id=col4>
+        <div id="start" class="boutonRecord" onclick="this.classList.toggle('active')">
+          <div class="fondRecord" x="0" y="0" width="200" height="200"></div>
+          <div class="iconeRecord" width="200" height="200">
+            <div class="partie gauche" x="0" y="0" width="200" height="200" fill="#fff"></div>
+            <div class="partie droite" x="0" y="0" width="200" height="200" fill="#fff"></div>
+          </div>
+          <div class="point"></div>
+        </div>
+      </div>
+
+      <div id=col3>
+        <button class="start-stop"> START </button>
+        <script type="text/javascript">
+            // Ici on apelle la fonction
+        </script>
+      </div>
+
+      <div id=col5>
+        <button class="upload1"></button>
+      </div>
+    </div>
   </main>
     
   </section>
@@ -60,7 +75,7 @@ $_SESSION['history']['actual-page'] = 'lesson.php';
   <script type="module" src="js/hands.js"></script>
   <script type="module" src="js/fonctions.js"></script>
   <script type="module" src="js/metronome.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
 </html>

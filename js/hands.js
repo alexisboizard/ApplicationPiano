@@ -2,7 +2,7 @@ const video3 = document.getElementsByClassName("input3")[0];
 var cal1 = document.querySelector('.calibrage1');
 var cal2 = document.querySelector('.calibrage2');
 const out3 = document.getElementsByClassName("output3")[0];
-const controlsElement = document.getElementsByClassName("control3")[0];
+const controlsElement = document.getElementsByClassName("upload1")[0];
 const controls = window;
 const canvasCtx = out3.getContext("2d");
 const button = document.getElementById("start");
@@ -12,6 +12,37 @@ const fpsControl = new FPS();
 
 let width = 1280;
 let height = 720;
+
+let distance_auriculaire = 0;
+let dist_index_gauche = 0;
+let distanc = 0;
+let distance_annulaire = 0;
+let distance_majeur = 0;
+let distance_pouce = 0;
+
+let distance_auriculaire2 = 0;
+let dist_index_gauche2 = 0;
+let distanc2 = 0;
+let distance_annulaire2 = 0;
+let distance_majeur2 = 0;
+let distance_pouce2 = 0;
+
+let distance_auriculaire3 = 0;
+let dist_index_gauche3 = 0;
+let distanc3 = 0;
+let distance_annulaire3 = 0;
+let distance_majeur3 = 0;
+let distance_pouce3 = 0;
+
+let radianindexmajeurgauche = 0;
+let angleindexmajeurgauche = 0;
+
+let radianindexmajeurgauche2 = 0;
+let angleindexmajeurgauche2 = 0;
+
+let radianindexmajeurgauche3 = 0;
+let angleindexmajeurgauche3 = 0;
+
 
 let now = new Date();
 
@@ -27,15 +58,19 @@ function onResults(results) {
         lineWidth: 5,
       });
       drawLandmarks(canvasCtx, landmarks, { color: "#FF0000", lineWidth: 2 });
+
       //console.log(results.multiHandLandmarks);
+      /*
       let distance_auriculaire = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));   
       let dist_index_gauche = Math.sqrt(Math.pow((results.multiHandLandmarks[0][8].x-results.multiHandLandmarks[0][5].x), 2)+Math.pow((results.multiHandLandmarks[0][8].y-results.multiHandLandmarks[0][5].y), 2)+Math.pow((results.multiHandLandmarks[0][8].z-results.multiHandLandmarks[0][5].z), 2));   
       let distanc = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));
       let distance_annulaire = Math.sqrt(Math.pow((results.multiHandLandmarks[0][13].x-results.multiHandLandmarks[0][16].x), 2)+Math.pow((results.multiHandLandmarks[0][13].y-results.multiHandLandmarks[0][16].y), 2)+Math.pow((results.multiHandLandmarks[0][13].z-results.multiHandLandmarks[0][16].z), 2));
       let distance_majeur = Math.sqrt(Math.pow((results.multiHandLandmarks[0][12].x-results.multiHandLandmarks[0][9].x), 2)+Math.pow((results.multiHandLandmarks[0][12].y-results.multiHandLandmarks[0][9].y), 2)+Math.pow((results.multiHandLandmarks[0][12].z-results.multiHandLandmarks[0][9].z), 2));
       let distance_pouce = Math.sqrt(Math.pow((results.multiHandLandmarks[0][2].x-results.multiHandLandmarks[0][4].x), 2)+Math.pow((results.multiHandLandmarks[0][2].y-results.multiHandLandmarks[0][4].y), 2)+Math.pow((results.multiHandLandmarks[0][2].z-results.multiHandLandmarks[0][4].z), 2));
-
+      */
       //console.log("Distance : ", distance);
+
+      //calculMarker(distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2);
 
 
       let radianindexmajeurgauche = Math.atan(results.multiHandLandmarks[0][8].x - results.multiHandLandmarks[0][12].x, results.multiHandLandmarks[0][8].y - results.multiHandLandmarks[0][12].y) - Math.atan(results.multiHandLandmarks[0][9].x - results.multiHandLandmarks[0][12].x, results.multiHandLandmarks[0][9].y - results.multiHandLandmarks[0][12].y);
@@ -146,6 +181,37 @@ new controls
 
 start.addEventListener("click", startRecording);
 
+
+
+cal1.addEventListener("click", calibrage1(results, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce, distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2));
+cal2.addEventListener("click", calibrage2(results, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2, distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce));
+
+function calibrage1(results, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce, distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2) {
+  if (results.multiHandLandmarks) {
+    distance_auriculaire = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));   
+    dist_index_gauche = Math.sqrt(Math.pow((results.multiHandLandmarks[0][8].x-results.multiHandLandmarks[0][5].x), 2)+Math.pow((results.multiHandLandmarks[0][8].y-results.multiHandLandmarks[0][5].y), 2)+Math.pow((results.multiHandLandmarks[0][8].z-results.multiHandLandmarks[0][5].z), 2));   
+    distanc = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));
+    distance_annulaire = Math.sqrt(Math.pow((results.multiHandLandmarks[0][13].x-results.multiHandLandmarks[0][16].x), 2)+Math.pow((results.multiHandLandmarks[0][13].y-results.multiHandLandmarks[0][16].y), 2)+Math.pow((results.multiHandLandmarks[0][13].z-results.multiHandLandmarks[0][16].z), 2));
+    distance_majeur = Math.sqrt(Math.pow((results.multiHandLandmarks[0][12].x-results.multiHandLandmarks[0][9].x), 2)+Math.pow((results.multiHandLandmarks[0][12].y-results.multiHandLandmarks[0][9].y), 2)+Math.pow((results.multiHandLandmarks[0][12].z-results.multiHandLandmarks[0][9].z), 2));
+    distance_pouce = Math.sqrt(Math.pow((results.multiHandLandmarks[0][2].x-results.multiHandLandmarks[0][4].x), 2)+Math.pow((results.multiHandLandmarks[0][2].y-results.multiHandLandmarks[0][4].y), 2)+Math.pow((results.multiHandLandmarks[0][2].z-results.multiHandLandmarks[0][4].z), 2));
+    calculMarker(distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2);
+    console.log("calibrage 1 mis a jour :)");
+  }
+}
+
+function calibrage2(results, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2, distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce) {
+  if (results.multiHandLandmarks) {
+    distance_auriculaire2 = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));   
+    dist_index_gauche2 = Math.sqrt(Math.pow((results.multiHandLandmarks[0][8].x-results.multiHandLandmarks[0][5].x), 2)+Math.pow((results.multiHandLandmarks[0][8].y-results.multiHandLandmarks[0][5].y), 2)+Math.pow((results.multiHandLandmarks[0][8].z-results.multiHandLandmarks[0][5].z), 2));   
+    distanc2 = Math.sqrt(Math.pow((results.multiHandLandmarks[0][17].x-results.multiHandLandmarks[0][20].x), 2)+Math.pow((results.multiHandLandmarks[0][17].y-results.multiHandLandmarks[0][20].y), 2)+Math.pow((results.multiHandLandmarks[0][17].z-results.multiHandLandmarks[0][20].z), 2));
+    distance_annulaire2 = Math.sqrt(Math.pow((results.multiHandLandmarks[0][13].x-results.multiHandLandmarks[0][16].x), 2)+Math.pow((results.multiHandLandmarks[0][13].y-results.multiHandLandmarks[0][16].y), 2)+Math.pow((results.multiHandLandmarks[0][13].z-results.multiHandLandmarks[0][16].z), 2));
+    distance_majeur2 = Math.sqrt(Math.pow((results.multiHandLandmarks[0][12].x-results.multiHandLandmarks[0][9].x), 2)+Math.pow((results.multiHandLandmarks[0][12].y-results.multiHandLandmarks[0][9].y), 2)+Math.pow((results.multiHandLandmarks[0][12].z-results.multiHandLandmarks[0][9].z), 2));
+    distance_pouce2 = Math.sqrt(Math.pow((results.multiHandLandmarks[0][2].x-results.multiHandLandmarks[0][4].x), 2)+Math.pow((results.multiHandLandmarks[0][2].y-results.multiHandLandmarks[0][4].y), 2)+Math.pow((results.multiHandLandmarks[0][2].z-results.multiHandLandmarks[0][4].z), 2));
+    calculMarker(distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2);
+    console.log("calibrage 2 mis a jour :)");
+  }
+}
+
 let notification = Toastify({
   text: "La vidéo a bien été enregistrée",
   duration: 2000,
@@ -167,6 +233,16 @@ function generateString(length) {
   }
 
   return result;
+}
+
+function calculMarker(distance_auriculaire3, dist_index_gauche3, distanc3, distance_annulaire3, distance_majeur3, distance_pouce3, distance_auriculaire, dist_index_gauche, distanc, distance_annulaire, distance_majeur, distance_pouce, distance_auriculaire2, dist_index_gauche2, distanc2, distance_annulaire2, distance_majeur2, distance_pouce2){
+  distance_auriculaire3 = distance_auriculaire2 - distance_auriculaire;
+  dist_index_gauche3 = dist_index_gauche2 - dist_index_gauche;
+  distanc3 = distanc2 - distanc;
+  distance_annulaire3 = distance_annulaire2 - distance_annulaire;
+  distance_majeur3 = distance_majeur2 - distance_majeur;
+  distance_pouce3 = distance_pouce2 - distance_pouce;
+  console.log("calcul de marqueur fait !");
 }
 
 
@@ -225,7 +301,14 @@ console.log(upload);
 upload.addEventListener("click",function(){
   camera.stop();
   console.log("")
-}); 
+});
+
+
+
+
+
+
+
 
 /**
  * 
